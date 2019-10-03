@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>{{ post.title }}</h1>
+    <small>
+        {{ post.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in post.categories.all %}
+        <a href="{% url 'lesson_tag' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ post.body | linebreaks }}</p>
+    <h3>Leave a comment:</h3>
+
+    <p>
+        This is where the comment form will be
+    </p>
+
+
+    <h3>Comments:</h3>
+    <p>
+        This is where comments would go... if we had any!
+    </p>
+</div>
+{% endblock %}
