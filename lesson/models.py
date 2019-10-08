@@ -52,9 +52,9 @@ class Lesson(CommentableObject):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True)
     body = models.TextField(null=True)
-    difficulty = models.CharField(max_length=20)
+    difficulty = models.SmallIntegerField(default=1) # 1 to 5
     language = models.CharField(max_length=30)
-    length = models.CharField(max_length=255)
+    length = models.FloatField(default=1) # Hours
     tags = models.ManyToManyField('Tag', related_name='lessons')
 
 
