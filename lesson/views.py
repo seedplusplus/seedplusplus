@@ -43,20 +43,20 @@ def lesson_detail(request, pk):
 
 def lesson_new(request):
     context = {
-        "pk": -1,
+        "pk": 0,
         "form": LessonForm()
     }
     return render(request, "lesson_edit.html", context)
 
 
 def lesson_edit(request, pk):
-    if pk >= 0:
+    if pk > 0:
         lesson = Lesson.objects.get(pk=pk)
     else:
         lesson = None
 
     if request.method == "POST":
-        if pk >= 0:
+        if pk > 0:
             form = LessonForm(request.POST, instance=lesson)
         else:
             form = LessonForm(request.POST)
@@ -68,6 +68,6 @@ def lesson_edit(request, pk):
 
     context = {
         "pk": pk,
-        "form": LessonForm(instance=lesson) if pk >= 0 else LessonForm()
+        "form": LessonForm(instance=lesson) if pk > 0 else LessonForm()
     }
     return render(request, "lesson_edit.html", context)
