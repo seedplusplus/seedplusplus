@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block page_content %}
 <div class="col-md-8 offset-md-2">
-    <h1>{{ post.title }}</h1>
+    <h1>{{ lesson.title }}</h1>
     <small>
-        {{ post.created_on.date }} |&nbsp;
-        Categories:&nbsp;
-        {% for category in post.categories.all %}
-        <a href="{% url 'lesson_tag' category.name %}">
-            {{ category.name }}
+        {{ lesson.created_on.date }} |&nbsp;
+        Tags:
+        {% for tag in lesson.tags.all %}
+        <a href="{% url 'lesson_tag' tag.name %}">
+            {{ tag.name }}
         </a>&nbsp;
         {% endfor %}
     </small>
-    <p>{{ post.body | linebreaks }}</p>
+    <p>{{ lesson.body | linebreaks }}</p>
     <h3>Leave a comment:</h3>
 
     <p>

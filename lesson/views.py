@@ -1,5 +1,12 @@
-from django.shortcuts import render
-from lesson.models import Lesson
+from django.shortcuts import render, redirect
+from django.utils import timezone
+
+from .forms import LessonForm
+from .functions import form_validate_and_save
+from .models import Lesson
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def lesson_index(request):
@@ -12,7 +19,7 @@ def lesson_index(request):
 
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
-        categories__name__contains=tag
+        tags__name__contains=tag
     ).order_by(
         '-created_on'
     )
@@ -21,6 +28,7 @@ def lesson_tag(request, tag):
         "lessons": lessons
     }
     return render(request, "lesson_tag.html", context)
+
 
 def lesson_detail(request, pk):
     lesson = Lesson.objects.get(pk=pk)
@@ -31,3 +39,35 @@ def lesson_detail(request, pk):
     }
 
     return render(request, "lesson_detail.html", context)
+
+
+def lesson_new(request):
+    context = {
+        "pk": -1,
+        "form": LessonForm()
+    }
+    return render(request, "lesson_edit.html", context)
+
+
+def lesson_edit(request, pk):
+    if pk >= 0:
+        lesson = Lesson.objects.get(pk=pk)
+    else:
+        lesson = None
+
+    if request.method == "POST":
+        if pk >= 0:
+            form = LessonForm(request.POST, instance=lesson)
+        else:
+            form = LessonForm(request.POST)
+        lesson = form_validate_and_save(form, request)
+        if lesson:
+            return redirect('lesson_detail', pk=lesson.pk)
+        else:
+            logger.error("lesson_edit form invalid: {}".format(form.errors))
+
+    context = {
+        "pk": pk,
+        "form": LessonForm(instance=lesson) if pk >= 0 else LessonForm()
+    }
+    return render(request, "lesson_edit.html", context)
