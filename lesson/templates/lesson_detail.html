@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block page_title %}
+{{ lesson.title | slice:":40" }}
+{% endblock %}
+
 {% block page_content %}
 <div class="col-md-8 offset-md-2">
     <h1>{{ lesson.title }}</h1>
