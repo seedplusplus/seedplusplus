@@ -48,6 +48,14 @@ def lesson_new(request):
     }
     return render(request, "lesson_edit.html", context)
 
+def lesson_delete(request, pk):
+    lesson = Lesson.objects.get(pk=pk)
+    lesson.delete()
+    context = {
+        "lesson": lesson,
+    }    
+    
+    return redirect('lesson_index')
 
 def lesson_edit(request, pk):
     if pk > 0:
