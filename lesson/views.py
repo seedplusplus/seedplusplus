@@ -51,9 +51,6 @@ def lesson_new(request):
 def lesson_delete(request, pk):
     lesson = Lesson.objects.get(pk=pk)
     lesson.delete()
-    context = {
-        "lesson": lesson,
-    }    
     
     return redirect('lesson_index')
 
