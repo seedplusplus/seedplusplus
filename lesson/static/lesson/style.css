@@ -1,8 +1,0 @@
-/*this works*/
-body {background: palegreen !important;}
-
-/*this doesn't*/
-#top-nav nav {
-    background-color:purple !important;
-}
-/*and I don't know why*/

@@ -1,0 +1,14 @@
+
+@import 'variables';
+
+body.dark {
+  background-color: $purple-grey;
+  color: $white;
+  nav {
+    background-color: $purple-dark;
+  }
+
+}
+
+
+@import '../bootstrap/bootstrap';
