@@ -1,8 +1,61 @@
 /*this works*/
-body {background: palegreen !important;}
-
-/*this doesn't*/
-#top-nav nav {
-    background-color:purple !important;
+body {background: white !important;
+	font-family: myriad-pro,sans-serif;
 }
-/*and I don't know why*/
+
+#top-nav {
+    background-color:#40383D;
+    padding:0;
+    border-bottom: 8px solid;
+    border-bottom-color: #007A00;
+}
+
+#top-nav li:hover{
+	background-color: #00CA00;
+}
+
+#top-nav a{
+	color: white;
+	font-size: 1.1rem;
+	font-weight: 650;
+	letter-spacing: 1px;
+}
+
+#top-nav li{
+	padding-left:15px;
+	padding-right:15px;
+	margin-top:8px;
+	border-radius: 25px 25px 0px 0px;
+}
+
+.active{
+	background-color: #007A00 ;
+}
+
+#landing-banner h1{
+	font-weight: 650;
+	text-align: center;
+}
+
+#landing-banner p{
+	font-weight: 400;
+	width: 40%;
+	text-align:center;
+	margin:auto;
+}
+
+#landing-banner a{
+	font-weight: 400;
+	width: 40%;
+	text-align:center;
+	margin:auto;
+}
+
+#explore_header{
+	font-weight: 400;
+	font-size: 2rem;
+}
+/*
+Myriad Pro Bold
+font-family:;
+*/

@@ -2,23 +2,15 @@
 {% block page_title %}Home{% endblock %}
 
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
-    <h1>Lesson Index</h1>
-    <hr>
-    <h2><a href="{%  url 'lesson_new' %}"> NEW </a></h2>
-    <hr>
-    {% for lesson in Lessons %}
-    <h2><a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a></h2>
-    <small>
-        {{ lesson.created_on.date }} |&nbsp;
-        Tags:&nbsp;
-        {% for tag in lesson.tags.all %}
-        <a href="{% url 'lesson_tag' tag.name %}">
-            {{ tag.name }}
-        </a>&nbsp;
-        {% endfor %}
-    </small>
-    <p>{{ lesson.body | slice:":400" }}...</p>
-    {% endfor %}
-</div>
+    <div class="jumbotron" id="landing-banner">
+        <h1>Promoting Growth</h1>
+        <p>
+            Seed++ seeks to help people find, create, share,
+            and collaborate on open source lessons and courses for
+            teaching programming and computer science.
+        </p>
+        <div style="text-align:center">
+            <a href="">Sign up and start here!</a>
+        </div>
+    </div>
 {% endblock %}

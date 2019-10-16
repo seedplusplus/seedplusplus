@@ -13,9 +13,19 @@ def lesson_index(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
+        "current": 'index',
     }
     return render(request, "lesson_index.html", context)
 
+def lesson_explore(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'explore',
+    }
+    current = 'explore'
+    print(current)
+    return render(request, "lesson_explore.html", context)
 
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
@@ -25,8 +35,10 @@ def lesson_tag(request, tag):
     )
     context = {
         "tag": tag,
-        "lessons": lessons
+        "lessons": lessons,
+        "current":'tag',
     }
+    current = 'tag'
     return render(request, "lesson_tag.html", context)
 
 
@@ -36,8 +48,9 @@ def lesson_detail(request, pk):
     context = {
         "lesson": lesson,
         # "comments": comments,
-    }
+        "current":'detail',
 
+    }
     return render(request, "lesson_detail.html", context)
 
 
