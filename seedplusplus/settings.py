@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lesson',
-    'compressor'
+    'registration',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
