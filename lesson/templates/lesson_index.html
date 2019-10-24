@@ -10,7 +10,16 @@
             teaching programming and computer science.
         </p>
         <div style="text-align:center">
-            <a href="">Sign up and start here!</a>
+
+        {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+          <p><a href="{% url 'logout' %}">Log Out</a></p>
+        {% else %}
+            <hr>
+          <a href="{% url 'login' %}">Login</a>
+           <p><a href="{% url 'signup' %}">Sign up and start here!</a></p>
+        {% endif %}
+        <hr>
         </div>
     </div>
 {% endblock %}
