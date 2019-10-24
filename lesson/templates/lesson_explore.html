@@ -10,9 +10,9 @@
     </div>
 </div>
 <div class= "row">
-    <div class = "col-md-2">
-        <div class="offset-md-2">
-            <div class="card">
+    <div id = "left-col-explore" class = "col-md-2">
+        <div>
+            <div class="card" id="filter">
             <div class="card-header">Filters</div>
                 <div class="card-body">
                     <ul>
@@ -24,26 +24,42 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-8">
+        <!--
         <hr>
         <h2><a href="{%  url 'lesson_new' %}"> NEW </a></h2>
         <hr>
+        -->
         {% for lesson in Lessons %}
-        <div class="card form-group" style="background-color:#AE6B0F;">
-        <h2><a href="{% url 'lesson_detail' lesson.pk%}" style="color:#fff;">{{ lesson.title }}</a></h2>
-        <small style="color:#fff;">
-            {{ lesson.created_on.date }} &nbsp;
-            <div class = "row"  style="padding:1%">
-            {% for tag in lesson.tags.all %}
-            <div class="card col-2 " style="margin:1%">
-            <a href="{% url 'lesson_tag' tag.name %}">
-                {{ tag.name }}
-            </a>&nbsp;
+        <div class="card form-group" id="lesson_card">
+        <div id="card-margin">
+            <h2 id="lesson_title">
+                <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
+                <div id='date-text'>
+                    {{ lesson.created_on.date }} &nbsp;
+                </div>
+            </h2>
+            <div id="mid_lesson">
+                <span id="language-header">
+                    Python69
+                </span>
+                <span id="duration-header">
+                    > 1 hour
+                </span>
             </div>
-            {% endfor %}
+            <!--
+            <div id= "tag-row" class = "row" >
+                {% for tag in lesson.tags.all %}
+                <div id= "tag" class="card col-2 " >
+                <a href="{% url 'lesson_tag' tag.name %}">
+                    {{ tag.name }}
+                </a>&nbsp;
+                </div>
+                {% endfor %}
+            </div>
+            -->
+            <p>{{ lesson.body | slice:":400" }}...</p>
         </div>
-        </small>
-        <p style="color:#fff;">{{ lesson.body | slice:":400" }}...</p>
         </div>
         {% endfor %}
     </div>

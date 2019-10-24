@@ -1,6 +1,7 @@
 /*this works*/
 body {background: white !important;
 	font-family: myriad-pro,sans-serif;
+	color:#362630;
 }
 
 #top-nav {
@@ -11,6 +12,8 @@ body {background: white !important;
 }
 
 #top-nav li:hover{
+	-webkit-transition: background-color .5s; /* Safari prior 6.1 */
+	transition: background-color .5s;
 	background-color: #00CA00;
 }
 
@@ -29,7 +32,7 @@ body {background: white !important;
 }
 
 .active{
-	background-color: #007A00 ;
+	background-color: #007A00 !important;
 }
 
 #landing-banner h1{
@@ -51,10 +54,106 @@ body {background: white !important;
 	margin:auto;
 }
 
-#explore_header{
-	font-weight: 400;
-	font-size: 2rem;
+#left-col-explore{
+	margin-left:30px;
 }
+
+#explore_header{
+	font-weight: 600;
+	font-size: 4rem;
+}
+
+#filter{
+	background-color: #F6EDF7;
+}
+
+#lesson_card{
+	background-color: #F6EDF7;
+	border-radius: 20px;
+}
+
+#lesson_card h2{
+	display: inline-block;
+	font-size: 2.3rem;
+	margin-right:55%;
+}
+
+#lesson_card h2 a{
+	color:#362630;
+}
+
+#mid_lesson{
+	margin-bottom: 20px;
+}
+
+#lesson_card p{
+	font-family: myriad-pro,sans-serif;
+	font-style: italic;
+	font-size: 1.4rem;
+	line-height: 1.2;
+
+}
+
+#lesson_title{
+    border-bottom: 4px solid;
+    border-bottom-color: #362630;
+    width: 100%;
+}
+
+#lesson_title a{
+	font-weight: 500;
+}
+
+#card-margin{
+	margin:20px;
+}
+
+#date-text{
+	font-size: 1.3rem;
+	display: inline;
+	float:right;
+}
+
+#language-header{
+	color:white;
+	background-color: #00CA00;
+	font-weight: 600;
+	font-size: 1.25rem;
+	text-align: center;
+	border-radius: 15px;
+	padding: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+}
+
+#duration-header{
+	color:white;
+	background-color: #A44800;
+	font-weight: 600;
+	font-size: 1.25rem;
+	text-align: center;
+	border-radius: 15px;
+	padding: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: inline-block;
+}
+
+#tag{
+	height: 100%
+}
+
+#tag a{
+	vertical-align: middle;
+}
+
+#tag-row{
+	padding:0;
+	margin:1%;
+	height: 40px;
+}
+
 /*
 Myriad Pro Bold
 font-family:;
