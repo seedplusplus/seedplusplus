@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from .forms import LessonForm
-from .functions import form_validate_and_save
+from .functions import form_validate_and_save, has_perm, set_perm
 from .models import Lesson
 import logging
 
@@ -53,39 +54,46 @@ def lesson_detail(request, pk):
     }
     return render(request, "lesson_detail.html", context)
 
-
+@login_required()
 def lesson_new(request):
-    context = {
-        "pk": 0,
-        "form": LessonForm()
-    }
-    return render(request, "lesson_edit.html", context)
-
-def lesson_delete(request, pk):
-    lesson = Lesson.objects.get(pk=pk)
-    lesson.delete()
-    
-    return redirect('lesson_index')
-
-def lesson_edit(request, pk):
-    if pk > 0:
-        lesson = Lesson.objects.get(pk=pk)
-    else:
-        lesson = None
 
     if request.method == "POST":
-        if pk > 0:
-            form = LessonForm(request.POST, instance=lesson)
-        else:
-            form = LessonForm(request.POST)
+        form = LessonForm(request.POST)
         lesson = form_validate_and_save(form, request)
         if lesson:
             return redirect('lesson_detail', pk=lesson.pk)
         else:
-            logger.error("lesson_edit form invalid: {}".format(form.errors))
+            logger.error("lesson_new form invalid: {}".format(form.errors))
 
     context = {
-        "pk": pk,
-        "form": LessonForm(instance=lesson) if pk > 0 else LessonForm()
+        "form": LessonForm(),
     }
-    return render(request, "lesson_edit.html", context)
+    return render(request, "lesson_new.html", context)
+
+@login_required
+def lesson_edit(request, pk):
+    lesson = Lesson.objects.get(pk=pk)
+    if not has_perm(request.user, lesson, 'lesson.change_lesson'):
+        return redirect('/login/?next=%s' % request.path)
+    if request.method == "POST":
+        form = LessonForm(request.POST, instance=lesson)
+        lesson = form_validate_and_save(form, request, edit=True)
+
+        if lesson:
+            return redirect('lesson_detail', pk=lesson.pk)
+        else:
+            logger.error("lesson_edit form invalid: {}".format(form.errors))
+    else:
+
+        context = {
+            "pk": pk,
+            "form": LessonForm(instance=lesson)
+        }
+        return render(request, "lesson_edit.html", context)
+
+
+def lesson_delete(request, pk):
+    lesson = Lesson.objects.get(pk=pk)
+    lesson.delete()
+
+    return redirect('lesson_index')
