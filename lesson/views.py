@@ -27,6 +27,14 @@ def lesson_explore(request):
     print(current)
     return render(request, "lesson_explore.html", context)
 
+def lesson_about(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'about',
+    }
+    return render(request, "lesson_about.html", context)
+
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
         tags__name__contains=tag
@@ -89,3 +97,9 @@ def lesson_edit(request, pk):
         "form": LessonForm(instance=lesson) if pk > 0 else LessonForm()
     }
     return render(request, "lesson_edit.html", context)
+
+def get_queryset(self): # new
+    query = self.request.GET.get('q')
+    return Lesson.objects.filter(
+        Q(title__icontains=query) | Q(description__icontains=query)
+    )
