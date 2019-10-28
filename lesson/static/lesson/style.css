@@ -1,7 +1,53 @@
 /*this works*/
-body {background: white !important;
+body {
+	background: white !important;
 	font-family: myriad-pro,sans-serif;
 	color:#362630;
+}
+.top-buffer { 
+	margin-top: 100px;
+}
+
+.top-buffer-half { 
+	margin-top: 50px;
+}
+
+.submit-button{
+	width:75%;
+}
+
+#home_submit{
+	width:50%;
+	border-radius: 10px;
+	font-weight: 650;
+	background-color: #007A00;
+	border-style: none;
+	color: #F6EDF7;
+}
+
+#home_text{
+	text-align: center;
+	color:#362630;
+	font-size: 6.5rem;
+	font-weight: 650;
+	padding-bottom: 0;
+}
+
+#home_search{
+	border-color:#F6EDF7;
+	border-radius: 25px;
+	border-style: solid;
+	padding:7.5px;
+	padding-left: 10px;
+	width:69%;
+}
+
+#home_search:hover{
+	box-shadow: 0px 2px 4px 2px grey;
+}
+
+#home_search:focus{
+	box-shadow: 0px 2px 4px 2px grey;
 }
 
 #top-nav {
@@ -22,6 +68,10 @@ body {background: white !important;
 	font-size: 1.1rem;
 	font-weight: 650;
 	letter-spacing: 1px;
+}
+
+#login_button{
+	float:right;
 }
 
 #top-nav li{

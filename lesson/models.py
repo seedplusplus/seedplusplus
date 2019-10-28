@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from django.views.generic import TemplateView, ListView
 
 
 class Tag(models.Model):
@@ -68,3 +69,7 @@ class Vote(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     value = models.SmallIntegerField(default=0)
+
+class SearchResultsView(ListView):
+    model = Lesson
+    template_name = 'search_results.html'

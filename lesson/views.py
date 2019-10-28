@@ -9,7 +9,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 def lesson_index(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
@@ -27,6 +26,14 @@ def lesson_explore(request):
     current = 'explore'
     print(current)
     return render(request, "lesson_explore.html", context)
+
+def lesson_about(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'about',
+    }
+    return render(request, "lesson_about.html", context)
 
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
@@ -84,16 +91,20 @@ def lesson_edit(request, pk):
         else:
             logger.error("lesson_edit form invalid: {}".format(form.errors))
     else:
-
         context = {
             "pk": pk,
             "form": LessonForm(instance=lesson)
         }
         return render(request, "lesson_edit.html", context)
 
-
 def lesson_delete(request, pk):
     lesson = Lesson.objects.get(pk=pk)
     lesson.delete()
 
     return redirect('lesson_index')
+
+def get_queryset(self): # new
+    query = self.request.GET.get('q')
+    return Lesson.objects.filter(
+        Q(title__icontains=query) | Q(description__icontains=query)
+    )
