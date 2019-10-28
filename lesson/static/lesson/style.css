@@ -12,6 +12,15 @@ body {
 	margin-top: 50px;
 }
 
+.top-buffer-quarter { 
+	margin-top: 25px;
+}
+
+.bot-buffer-quarter { 
+	margin-bottom: 25px;
+}
+
+
 .submit-button{
 	width:75%;
 }
@@ -202,6 +211,20 @@ body {
 	padding:0;
 	margin:1%;
 	height: 40px;
+}
+
+#comment-box{
+	width: 100%;
+	border-style: none;
+}
+
+#comment_submit{
+	float:right;
+	background-color: #00CA00;
+	border-radius: 5px;
+	border: 2px solid black;
+	padding:10px;
+	font-weight: 600;
 }
 
 /*
