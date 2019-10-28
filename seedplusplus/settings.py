@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     # third party apps
     'compressor',
     'guardian',
@@ -93,7 +94,7 @@ DATABASES = {
         'NAME': 'SEED++',
         'USER': 'postgres',
         'PASSWORD': 'iliketreats',
-        'HOST': '',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }

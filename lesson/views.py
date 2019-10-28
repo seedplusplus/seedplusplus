@@ -24,7 +24,7 @@ def lesson_explore(request):
         "current": 'explore',
     }
     current = 'explore'
-    print(current)
+    #print(current)
     return render(request, "lesson_explore.html", context)
 
 def lesson_about(request):
@@ -60,6 +60,15 @@ def lesson_detail(request, pk):
 
     }
     return render(request, "lesson_detail.html", context)
+
+def lesson_search(request):
+    query = request.GET.get('home_search')
+    results = Lesson.objects.filter(title__search=query)
+    context = {
+        "Lessons": results,
+        "current":'search',
+    }
+    return render(request, "lesson_explore.html", context)
 
 @login_required()
 def lesson_new(request):
