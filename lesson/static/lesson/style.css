@@ -12,11 +12,25 @@ body {
 	margin-top: 50px;
 }
 
+.submit-button{
+	width:75%;
+}
+
+#home_submit{
+	width:50%;
+	border-radius: 10px;
+	font-weight: 650;
+	background-color: #007A00;
+	border-style: none;
+	color: #F6EDF7;
+}
+
 #home_text{
 	text-align: center;
 	color:#362630;
 	font-size: 6.5rem;
 	font-weight: 650;
+	padding-bottom: 0;
 }
 
 #home_search{

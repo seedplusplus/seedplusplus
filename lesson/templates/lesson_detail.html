@@ -8,7 +8,7 @@
 <div class="col-md-8 offset-md-2">
     <h1>{{ lesson.title }}</h1>
     <small>
-        {{ lesson.created_on.date }} |&nbsp;
+        {{ lesson.created_on.date }} |&nbsp;{{ lesson.last_modified.date }} |
         Tags:
         {% for tag in lesson.tags.all %}
         <a href="{% url 'lesson_tag' tag.name %}">

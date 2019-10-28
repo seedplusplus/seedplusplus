@@ -4,8 +4,13 @@
 {% block page_content %}
 <div class="col-md-8 offset-md-2 top-buffer" id="home_text"> Explore Seed++</div>
 <div class="col-md-8 offset-md-2 top-buffer-half" style="text-align: center;">
-  <form action="{% url 'search_results' %}" method="get">
-    <input type="text" name="home_search" id="home_search">
+  <form action="" method="get">
+    <div class="col">
+      <input placeholder="Search for Lessons" type="text" name="home_search" id="home_search">
+    </div>
+    <div class="col-md-4 offset-md-4 top-buffer-half submit-button">
+      <input type="submit" id="home_submit" value="Search">
+    </div>
   </form>
 </div>
 
