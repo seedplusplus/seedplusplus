@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from .forms import LessonForm
 from .functions import form_validate_and_save, has_perm, set_perm
@@ -62,8 +63,15 @@ def lesson_detail(request, pk):
     return render(request, "lesson_detail.html", context)
 
 def lesson_search(request):
-    query = request.GET.get('home_search')
-    results = Lesson.objects.filter(title__search=query)
+    
+    query = SearchQuery(request.GET.get('home_search'))
+    vector = SearchVector('title','description','body','language','difficulty','tags','length')
+    weights_ = [1.0,0.4,0.2,1.0,0.1,1.0,0.1]
+    results = Lesson.objects.annotate(rank=SearchRank(vector,query,weights=weights_)).filter(rank__gte=0.01).order_by('-rank')
+    
+    # Remove duplicates
+    results = list( dict.fromkeys(results) )
+        
     context = {
         "Lessons": results,
         "current":'search',
