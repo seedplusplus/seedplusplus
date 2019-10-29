@@ -204,6 +204,18 @@ body {
 	height: 40px;
 }
 
+#length{
+	font-weight: bold;
+}
+
+#language{
+	font-weight: bold;
+}
+
+#difficulty{
+	font-weight: bold;
+}
+
 /*
 Myriad Pro Bold
 font-family:;
