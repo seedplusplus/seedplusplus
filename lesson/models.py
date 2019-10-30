@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView, ListView
-
-
-class Tag(models.Model):
-    name = models.CharField(max_length=50)
+from taggit.managers import TaggableManager
 
 
 class UserCreatedObject(models.Model):
@@ -39,7 +36,6 @@ class Rating(models.Model):
     content_object = GenericForeignKey()
 
 
-
 class CommentableObject(UserCreatedObject):
     class Meta:
         abstract = True
@@ -56,20 +52,16 @@ class Lesson(CommentableObject):
     difficulty = models.SmallIntegerField(default=1) # 1 to 5
     language = models.CharField(max_length=30)
     length = models.FloatField(default=1) # Hours
-    tags = models.ManyToManyField('Tag', related_name='lessons')
+    tags = TaggableManager()
 
 
 class Curriculum(CommentableObject):
     body = models.TextField()
     lessons = models.ManyToManyField('Lesson', related_name='curricula')
-    tags = models.ManyToManyField('Tag', related_name='curricula')
+    tags = TaggableManager()
 
 
 class Vote(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     value = models.SmallIntegerField(default=0)
-
-class SearchResultsView(ListView):
-    model = Lesson
-    template_name = 'search_results.html'

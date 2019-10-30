@@ -62,8 +62,8 @@ def lesson_detail(request, pk):
     }
     return render(request, "lesson_detail.html", context)
 
+
 def lesson_search(request):
-    
     query = SearchQuery(request.GET.get('home_search'))
     vector = SearchVector('title','description','body','language','difficulty','tags','length')
     weights_ = [1.0,0.4,0.2,1.0,0.1,1.0,0.1]
@@ -78,7 +78,8 @@ def lesson_search(request):
     }
     return render(request, "lesson_explore.html", context)
 
-@login_required()
+
+@login_required
 def lesson_new(request):
 
     if request.method == "POST":
@@ -93,6 +94,7 @@ def lesson_new(request):
         "form": LessonForm(),
     }
     return render(request, "lesson_new.html", context)
+
 
 @login_required
 def lesson_edit(request, pk):
@@ -114,8 +116,14 @@ def lesson_edit(request, pk):
         }
         return render(request, "lesson_edit.html", context)
 
+
+@login_required
 def lesson_delete(request, pk):
     lesson = Lesson.objects.get(pk=pk)
+
+    if not has_perm(request.user, lesson, 'lesson.delete_lesson'):
+        return redirect('/login/?next=%s' % request.path)
+
     lesson.delete()
 
     return redirect('lesson_index')

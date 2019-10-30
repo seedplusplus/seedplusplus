@@ -1,10 +1,7 @@
 from django.contrib import admin
-from lesson.models import Lesson, Tag, Comment, Curriculum
+from lesson.models import Lesson, Comment, Curriculum
 
 class LessonAdmin(admin.ModelAdmin):
-    pass
-
-class TagAdmin(admin.ModelAdmin):
     pass
 
 class CurriculumAdmin(admin.ModelAdmin):
@@ -15,7 +12,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Lesson, LessonAdmin)
-admin.site.register(Tag, TagAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Curriculum, CurriculumAdmin)
 

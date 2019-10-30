@@ -18,6 +18,7 @@ def form_validate_and_save(form: django.forms.Form, request: django.http.request
         for key, value in kwargs.items():
             result.__setitem__(key, value)
         result.save()
+        form.save_m2m()
         return result
     else:
         return None

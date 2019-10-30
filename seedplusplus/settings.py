@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     # third party apps
-    'compressor',
+    'taggit',
     'guardian',
     # our apps
     'lesson',
@@ -91,7 +91,7 @@ DATABASES = {
       'ENGINE': 'django.db.backends.postgresql',
       'NAME': 'SEED++',
       'USER': 'postgres',
-      'PASSWORD': 'siegfried',
+        'PASSWORD': 'admin',
       'HOST': 'localhost',
       'PORT': '',
     }
@@ -139,9 +139,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
 STATICFILES_FINDERS = (
