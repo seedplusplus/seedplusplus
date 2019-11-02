@@ -40,3 +40,22 @@ class LessonForm(forms.ModelForm):
                   'difficulty',
                   'language',
                   'length']
+
+'''
+class CurriculumForm(forms.ModelForm):
+    difficulty = forms.ChoiceField(
+        label="Difficulty",
+        widget=forms.RadioSelect,
+        choices=DIFFICULTY_CHOICES,
+    )
+
+    length = forms.FloatField(label="Length (hours)")
+
+    class Meta:
+        model = Lesson
+        fields = ['title',
+                  'description',
+                  'difficulty',
+                  'language',
+                  'length']
+'''
