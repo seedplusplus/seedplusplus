@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="{% static 'favicon/favicon2.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon/favicon2.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://use.typekit.net/ioz4bwq.css">
+	<script src="{% static 'lesson/main.js' %}"></script>
+
 
 </head>
 
@@ -29,13 +31,13 @@
                   <a class="nav-link" href="{% url 'lesson_explore' %}">Explore</a>
                 </li>
                 <li class="nav-item  {% if current == 'about' %} active {% endif %}">
-                  <a class="nav-link" href="{% url 'lesson_index' %}">About</a>
+                  <a class="nav-link" href="{% url 'lesson_about' %}">About</a>
                 </li>
                 <li class="nav-item  {% if current == 'forum' %} active {% endif %}">
                   <a class="nav-link" href="{% url 'lesson_index' %}">Forum</a>
                 </li>
                 <li class="nav-item {% if current == 'faq' %} active{% endif %}">
-                  <a class="nav-link" href="{% url 'lesson_index' %}">FAQ</a>
+                  <a class="nav-link" href="{% url 'lesson_faq' %}">FAQ</a>
                 </li>
               </ul>
             </div>

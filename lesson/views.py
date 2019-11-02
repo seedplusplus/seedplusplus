@@ -36,6 +36,14 @@ def lesson_about(request):
     }
     return render(request, "lesson_about.html", context)
 
+def lesson_faq(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'faq',
+    }
+    return render(request, "lesson_faq.html", context)
+
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
         tags__name__contains=tag

@@ -16,6 +16,46 @@ body {
 	width:75%;
 }
 
+/*
+FAQ PAGE STUFF
+*/
+
+.faq ul{
+	padding:0;
+}
+.faq li {
+	list-style-type:none;
+	font-weight:600;
+	width:100%;
+	margin: auto;
+	cursor: pointer;
+	font-size: 1.5rem;
+	text-align:center;
+	background-color: #F6EDF7;
+	border-radius: 20px;
+	padding-bottom: 10px;
+	
+}
+
+.faq p {
+	margin:auto;
+	text-align:center;
+	text-decoration:none;
+	font-size: 1rem;
+	z-index: 1;
+	max-height:0px;
+	overflow: hidden;
+	-webkit-transform: perspective(400) rotate3d(1, 0, 0, -90deg);
+	-webkit-transform-origin: 50% 0;
+	-webkit-transition: 350ms;
+	-moz-transition: 350ms;
+	-o-transition: 350ms;
+	transition: 350ms;
+}
+
+
+
+
 #home_submit{
 	width:50%;
 	border-radius: 10px;
@@ -216,6 +256,7 @@ body {
 #difficulty{
       font-weight: bold;
 }
+
 
 /*
 Myriad Pro Bold

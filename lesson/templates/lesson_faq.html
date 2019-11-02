@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block page_title %}Home{% endblock %}
+
+{% block page_content %}
+<div class ="row form-group">
+    <div class = "col-4">
+        <div class="offset-md-2" id="explore_header" style="text-align:left; margin-left: 69px">
+            FAQ
+        </div>
+    </div>
+</div>
+<div class= "row">
+	<div class="offset-md-2">
+	</div>
+    <div class="col-md-8">
+		<div class="faq">
+			<ul>
+			<li onClick="faqclick('faq6')">What Is Seed++?</li>
+				<p id="faq6"> This is where we put what Seed is.</p>
+			<br>
+			<li onClick="faqclick('faq1')">Another important question?</li>
+				<p id="faq1"> uhhhh what's supposed to go on this page?</p>
+			<br>
+			<li onClick="faqclick('faq2')">Who's Sigfried?</li>
+				<p id="faq2"> Favicon family bruh lorem ipsum life</p>
+			<br>
+			<li onClick="faqclick('faq3')">Where can I find my lessons?</li>
+				<p id="faq3"> Hit up that profile page bruh. ;) </p>
+			<br>
+			<li onClick="faqclick('faq4')">How do I make a curriculum?</li>
+				<p id="faq4"> Click that button and do yo thang buu buu</p>
+			<br>
+			<li onClick="faqclick('faq5')">How do I pass SD&amp;D?</li>
+				<p id="faq5"> Make yo deliverables not SUCK bruh. DUH. </p>
+			<br>
+			</ul>
+		</div>
+        <!--
+        <hr>
+        <h2><a href="{%  url 'lesson_new' %}"> NEW </a></h2>
+        <hr>
+        -->
+    </div>
+	<div class="offset-md-2">
+	</div>
+</div>
+
+{% endblock %}
