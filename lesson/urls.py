@@ -11,5 +11,6 @@ urlpatterns = [
     path("tags/<tag>/", views.lesson_tag, name="lesson_tag"),
     path("lessons/new/", views.lesson_new, name="lesson_new"),
     path("lessons/<int:pk>/delete",views.lesson_delete,name="lesson_delete"),
-    path("lessons/results",views.lesson_search,name="lesson_search")
+    path("lessons/results",views.lesson_search,name="lesson_search"),
+    #path("curriculum/new/", views.curriculum_new, name="curriculum_new"),
 ]

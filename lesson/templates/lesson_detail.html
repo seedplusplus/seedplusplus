@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_title %}
 {{ lesson.title | slice:":40" }}
@@ -7,7 +8,9 @@
 {% block page_content %}
 <div class="row">
     <div class="col-md-2">
-        <img src="back-arrow" href="{% url 'lesson_explore' %}" title="back-arrow">
+        <a class="navbar-brand" href="{% url 'lesson_explore' %}" id="back_boi">
+            <img height="40px" src="{% static "back-arrow.png"%}" style="position:relative;top:-0px" alt="SEED++" >
+        </a>
     </div>
     <div class="col-md-8 top-buffer-half">
             <!--

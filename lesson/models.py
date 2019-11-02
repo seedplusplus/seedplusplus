@@ -60,8 +60,12 @@ class Lesson(CommentableObject):
 
 
 class Curriculum(CommentableObject):
-    body = models.TextField()
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True)
     lessons = models.ManyToManyField('Lesson', related_name='curricula')
+    difficulty = models.SmallIntegerField(default=1) # 1 to 5
+    description = models.TextField(null=True)
+    length = models.FloatField(default=1) # Hours
     tags = models.ManyToManyField('Tag', related_name='curricula')
 
 

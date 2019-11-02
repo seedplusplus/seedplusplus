@@ -2,7 +2,7 @@
 {% block page_title %}Home{% endblock %}
 
 {% block page_content %}
-<div class ="row form-group">
+<div class ="row form-group" style="margin-right: 0;">
     <div class = "col-4">
         <div class="offset-md-1" id="explore_header">
             Explore
@@ -25,11 +25,11 @@
         </div>
     </div>
     <div class="col-md-8">
-        <!--
+        
         <hr>
         <h2><a href="{%  url 'lesson_new' %}"> NEW </a></h2>
         <hr>
-        -->
+        
         {% for lesson in Lessons %}
         <div class="card form-group" id="lesson_card">
         <div id="card-margin">

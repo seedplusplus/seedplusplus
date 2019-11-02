@@ -20,8 +20,10 @@ def lesson_index(request):
 
 def lesson_explore(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
+    #Curricula = Curriculum.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
+        #"Curricula": Curricula,
         "current": 'explore',
     }
     current = 'explore'
@@ -119,6 +121,23 @@ def lesson_delete(request, pk):
     lesson.delete()
 
     return redirect('lesson_index')
+'''
+def curriculum_new(request):
+
+    if request.method == "POST":
+        form = CurriculumForm(request.POST)
+        curriculum = form_validate_and_save(form, request)
+        if curriculum:
+            return redirect('curriculum_detail', pk=curriculum.pk)
+        else:
+            logger.error("lesson_new form invalid: {}".format(form.errors))
+
+    context = {
+        "form": CurriculumForm(),
+    }
+    return render(request, "curriculum_new.html", context)
+
+'''
 
 def get_queryset(self): # new
     query = self.request.GET.get('q')
