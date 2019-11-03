@@ -88,10 +88,10 @@ COMPRESS_PRECOMPILERS = (
 
 DATABASES = {
     'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-      'NAME': 'SEED++',
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': 'db.sqlite3',
       'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'postgres',
       'HOST': 'localhost',
       'PORT': '',
     }
