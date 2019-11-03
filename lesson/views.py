@@ -49,8 +49,10 @@ def lesson_faq(request):
 @login_required
 def lesson_dashboard(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
+    Curricula = Curriculum.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
+        "Curricula": Curricula,
         "current": 'dashboard',
     }
     return render(request, "lesson_dashboard.html", context)
