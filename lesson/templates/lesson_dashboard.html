@@ -2,6 +2,8 @@
 {% load static %}
 {% block page_title %}Dashboard{% endblock %}
 {% block page_content %}
+
+{% if user.is_authenticated %}
 <div class= "row" id="home-background2">
 	<!-- Profile Pic GOES HERE --> 
 	<div class="col-md-2">
@@ -49,5 +51,11 @@
         {% endfor %}
 	</div>
 </div>
+{% endif %}
+
+{% if not user.is_authenticated %}
+
+{% endif %}
+}
 
 {% endblock %}

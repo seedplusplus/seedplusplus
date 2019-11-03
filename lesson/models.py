@@ -71,7 +71,6 @@ class Curriculum(CommentableObject):
     length = models.FloatField(default=1) # Hours
     tags = models.ManyToManyField('Tag', related_name='curricula')
 
-
 class Vote(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)

@@ -5,7 +5,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from .forms import LessonForm,CurriculumForm
 from .functions import form_validate_and_save, has_perm, set_perm
-from .models import Lesson
+from .models import Lesson,Curriculum
 import logging
 
 logger = logging.getLogger(__name__)
@@ -46,6 +46,7 @@ def lesson_faq(request):
     }
     return render(request, "lesson_faq.html", context)
 
+@login_required
 def lesson_dashboard(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
@@ -147,7 +148,7 @@ def curriculum_new(request):
         if curriculum:
             return redirect('curriculum_detail', pk=curriculum.pk)
         else:
-            logger.error("lesson_new form invalid: {}".format(form.errors))
+            logger.error("curriculum_new form invalid: {}".format(form.errors))
 
     context = {
         "form": CurriculumForm(),
@@ -155,7 +156,7 @@ def curriculum_new(request):
     return render(request, "curriculum_new.html", context)
 
 def curriculum_detail(request, pk):
-    curriculum = curriculum.objects.get(pk=pk)
+    curriculum = Curriculum.objects.get(pk=pk)
     # comments = Comment.objects.filter(lesson=lesson)
     context = {
         "curriculum": curriculum,

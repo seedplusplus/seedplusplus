@@ -19,8 +19,8 @@ def form_validate_and_save(form: django.forms.Form, request: django.http.request
         result.last_modified = timezone.now()
         for key, value in kwargs.items():
             result.__setitem__(key, value)
-        result.title = request.user.get_full_name
         result.save()
+        form.save_m2m()
         return result
     else:
         return None
