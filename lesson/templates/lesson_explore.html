@@ -3,43 +3,45 @@
 
 {% block page_content %}
 <div class ="row form-group" style="margin-right: 0;">
-    <div class = "col-4">
-        <div class="offset-md-1" id="explore_header">
-            Explore
-        </div>
+    <div class = "col-md-12" id="explore_header">
+		<div style = "margin-left:5%; color:#362630;text-shadow: 3px 3px 2px #F6EDF7;">
+			<div id = "header_fade">
+				Explore
+			</div>
+		</div>
     </div>
 </div>
-<div class= "row">
+<div class= "row" id="home-background2">
     <div id = "left-col-explore" class = "col-md-2">
-        <div>
-            <div class="card" id="filter">
-            <div class="card-header">Filters</div>
-                <div class="card-body">
-                    <ul style="list-style-type:none">
-                        <li id="length">Length</li>
-                        <input type="checkbox" name="less-than-1"> Less than 1 hour<br>
-                        <input type="checkbox" name="1 hour"> 1 hour<br>
-                        <input type="checkbox" name="2 hour"> 2 hours<br>
-                        <li id="language">Language </li>
-                        <input type="checkbox" name="python"> Python<br>
-                        <input type="checkbox" name="c++"> C++<br>
-                        <input type="checkbox" name="java"> Java<br>
-                        <li id="difficulty">Difficulty</li>
-                        <input type="checkbox" name="beginner"> Beginner<br>
-                        <input type="checkbox" name="intermediate"> Intermediate<br>
-                        <input type="checkbox" name="advanced"> Advanced<br>
-
-                    </ul>
-                </div> 
-            </div>
-        </div>
-    </div>
+		<div class="card" id="filter">
+			<div class="card-header" id="filter-header">Filters</div>
+				<div class="card-body">
+					<ul style="list-style-type:none">
+						<li id="length">Length</li>
+						<input type="checkbox" name="less-than-1"> Less than 1 hour<br>
+						<input type="checkbox" name="1 hour"> 1 hour<br>
+						<input type="checkbox" name="2 hour"> 2 hours<br>
+						<li id="language">Language </li>
+						<input type="checkbox" name="python"> Python<br>
+						<input type="checkbox" name="c++"> C++<br>
+						<input type="checkbox" name="java"> Java<br>
+						<li id="difficulty">Difficulty</li>
+						<input type="checkbox" name="beginner"> Beginner<br>
+						<input type="checkbox" name="intermediate"> Intermediate<br>
+						<input type="checkbox" name="advanced"> Advanced<br>
+						</ul>
+				</div> 
+			</div>
+		</div>
     <div class="col-md-8">
-        
+		<!--
         <hr>
         <h2><a href="{%  url 'lesson_new' %}"> NEW </a></h2>
         <hr>
-        
+        -->
+		<div class="card" id="sort-bar">
+			Sort
+		</div>
         {% for lesson in Lessons %}
         <div class="card form-group" id="lesson_card">
         <div id="card-margin">
@@ -54,7 +56,7 @@
                     Python69
                 </span>
                 <span id="duration-header">
-                    > 1 hour
+                    &lt; 1 hour
                 </span>
             </div>
             <!--
