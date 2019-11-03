@@ -4,12 +4,36 @@ body {
 	font-family: myriad-pro,sans-serif;
 	color:#362630;
 }
-.top-buffer { 
-	margin-top: 100px;
+
+
+.profpic img{
+  background: red;
+  border-radius: 50%;
+  border: 3px solid #40383D;
+  padding:12px;
+  margin: 15px;
 }
 
-.top-buffer-half { 
-	margin-top: 50px;
+.about-profile{
+	background: #F6EDF7;
+	border-radius: 20px;
+	text-align:center;
+	padding:10px;
+	margin-left: 20px;
+	margin-right:20px;
+}
+.about-profile h2{
+	color:#362630;
+	font-size:1.2rem;
+	font-weight:600;
+}
+
+.top-buffer { 
+	padding-top: 170px;
+}
+
+.top-buffer-less { 
+	margin-top: 10px;
 }
 
 .submit-button{
@@ -19,11 +43,17 @@ body {
 /*
 FAQ PAGE STUFF
 */
+.row{
+	margin-right:0 !important;
+	
+}
 
 .faq ul{
+	display: block;
 	padding:0;
 }
 .faq li {
+	display: block;
 	list-style-type:none;
 	font-weight:600;
 	width:100%;
@@ -33,11 +63,13 @@ FAQ PAGE STUFF
 	text-align:center;
 	background-color: #F6EDF7;
 	border-radius: 20px;
-	padding-bottom: 10px;
+	padding-bottom: 2px;
 	
 }
 
 .faq p {
+	display: block;
+	padding-top:2px;
 	margin:auto;
 	text-align:center;
 	text-decoration:none;
@@ -50,11 +82,39 @@ FAQ PAGE STUFF
 	-webkit-transition: 350ms;
 	-moz-transition: 350ms;
 	-o-transition: 350ms;
+	transform:perspective(400) rotate3d(1, 0, 0, -90deg);
+	transform-origin: 50% 0;
 	transition: 350ms;
 }
 
+#home-background{
+	background-image: url("/static/cloud.png");
+	background-position: center 75%;
+	background-size:170% 150%;
+	background-repeat:no-repeat;
+	height:91vh;
+	overflow:hidden;
+	box-shadow:0px 0px 800px white inset;
+	
+}
 
+#home-background2{
+	background-image: url("/static/cloud2.png");
+	background-position: 45% center;
+	width:100%;
+	background-repeat: repeat-y;
+	box-shadow:0px 0px 800px white inset;
+}
 
+#home-background3{
+	background-image: url("/static/cloud2.png");
+	background-position: center bottom;
+	width:100%;
+	height:50vh;
+	background-repeat: repeat-y;
+	box-shadow:0px 0px 800px white inset;
+	
+}
 
 #home_submit{
 	width:50%;
@@ -108,6 +168,9 @@ FAQ PAGE STUFF
 	font-size: 1.1rem;
 	font-weight: 650;
 	letter-spacing: 1px;
+	border-radius: 20px 20px 0 0;
+	padding-left:15px;
+	padding-right:15px;
 }
 
 #login_button{
@@ -115,10 +178,9 @@ FAQ PAGE STUFF
 }
 
 #top-nav li{
-	padding-left:15px;
-	padding-right:15px;
 	margin-top:8px;
-	border-radius: 25px 25px 0px 0px;
+	border-radius: 20px 20px 0px 0px;
+	
 }
 
 .active{
@@ -146,26 +208,67 @@ FAQ PAGE STUFF
 
 #left-col-explore{
 	margin-left:30px;
+	border-radius: 20px;
 }
 
 #explore_header{
+	background-image: url("/static/explore-banner.jpg");
+	background-position: center 10%;
+	background-size:100% 250%;
+	bsckground-repeat:no-repeat;
+	padding-bottom:70px;
+	padding-top: 30px;
 	font-weight: 600;
-	font-size: 4rem;
+	font-size: 5rem;
+	text-shadow: 3px 3px 1px #F6EDF7;
 }
+#faq_header{
+	background-image: url("/static/faq-banner.jpg");
+	background-position: center 31%;
+	background-size:100% 750%;
+	bsckground-repeat:no-repeat;
+	padding-bottom:70px;
+	padding-top: 30px;
+	font-weight: 600;
+	font-size: 5rem;
+	text-shadow: 3px 3px 1px #F6EDF7;
+}
+
+.card-header{
+	border-radius: 20px 20px 0 0 !important;
+	font-weight:600! important;
+	color: #F6EDF7 !important;
+	font-size: 1.2rem;
+	text-align: center;
+	padding:0;
+	background-color:#362630;
+}
+
 
 #filter{
 	background-color: #F6EDF7;
+	border-style:none;
+	border-radius: 20px 20px 20px 20px;
+	margin-left:0;
+}
+
+
+#filter ul{
+	padding:0;
+}
+#filter li{
+	font-weight:600;
 }
 
 #lesson_card{
 	background-color: #F6EDF7;
-	border-radius: 20px;
+	border-style:none;
+	border-radius: 20px 20px 20px 20px;
 }
 
 #lesson_card h2{
 	display: inline-block;
-	font-size: 2.3rem;
-	margin-right:55%;
+	font-size: 1.2rem;
 }
 
 #lesson_card h2 a{
@@ -173,25 +276,31 @@ FAQ PAGE STUFF
 }
 
 #mid_lesson{
-	margin-bottom: 20px;
+	font-size: 0.8rem;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 3px;
+	margin-bottom:5px;
 }
 
 #lesson_card p{
 	font-family: myriad-pro,sans-serif;
 	font-style: italic;
-	font-size: 1.4rem;
-	line-height: 1.2;
+	font-size: 1rem;
+	line-height: 1.1;
 
 }
 
 #lesson_title{
-    border-bottom: 4px solid;
+	font-weight:400;
+    border-bottom: 1px solid;
     border-bottom-color: #362630;
+	margin-bottom:0;
     width: 100%;
 }
 
 #lesson_title a{
-	font-weight: 500;
+	font-weight: 600;
 }
 
 #card-margin{
@@ -199,35 +308,9 @@ FAQ PAGE STUFF
 }
 
 #date-text{
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	display: inline;
 	float:right;
-}
-
-#language-header{
-	color:white;
-	background-color: #00CA00;
-	font-weight: 600;
-	font-size: 1.25rem;
-	text-align: center;
-	border-radius: 15px;
-	padding: 3px;
-	padding-left: 10px;
-	padding-right: 10px;
-	display: inline-block;
-}
-
-#duration-header{
-	color:white;
-	background-color: #A44800;
-	font-weight: 600;
-	font-size: 1.25rem;
-	text-align: center;
-	border-radius: 15px;
-	padding: 3px;
-	padding-left: 10px;
-	padding-right: 10px;
-	display: inline-block;
 }
 
 #tag{
@@ -244,7 +327,6 @@ FAQ PAGE STUFF
 	height: 40px;
 }
 
-
 #length{
       font-weight: bold;
 }
@@ -257,6 +339,87 @@ FAQ PAGE STUFF
       font-weight: bold;
 }
 
+/*
+Page Headers Fades n Stuff
+*/
+
+
+#language-header{
+	color:white;
+	background-color: #00CA00;
+	font-weight: 500;
+	text-align: center;
+	border-radius: 15px;
+	padding: 1px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: inline-block;
+}
+
+#duration-header{
+	color:white;
+	background-color: #A44800;
+	font-weight: 500;
+	text-align: center;
+	border-radius: 15px;
+	padding: 1px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: inline-block;
+}
+
+#header_fade {
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/*
+END PAGE HEADER STUFF
+*/
+
+#sort-bar{
+	background-color:#362630 !important;
+	border-radius:20px !important;
+	color: #F6EDF7;
+	border-style:none;
+	padding-top: 1px;
+	padding-bottom:3px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	font-size: 1.2rem;
+	font-weight: 600;
+	width:100%;
 
 /*
 Myriad Pro Bold
