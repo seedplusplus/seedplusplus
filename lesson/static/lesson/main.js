@@ -16,3 +16,7 @@ var prevfaq = "";
             info.style.maxHeight = "0px";
             prevfaq = "";}
     }
+	
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}

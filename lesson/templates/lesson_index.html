@@ -3,19 +3,18 @@
 
 {% block page_content %}
 <div id="home-background">
-	<div class="col-md-8 offset-md-2 top-buffer" id="home_text"> 
+	<div class="col-md-8 offset-md-2" id="home_text" style="margin-top:135px;"> 
 		<div id = "header_fade">
 			Search Seed++
 		</div>
 	</div>
-
-	<div class="col-md-8 offset-md-2 top-buffer-less" style="text-align: center; height:100%">
+	<div class="col-md-8 offset-md-2 top-buffer-less" style="text-align: center; height:90%;">
 	  <form action="{% url 'lesson_search' %}" method="get">
 		<div class="col">
 		  <input placeholder="Search for Lessons" type="text" name="home_search" id="home_search">
 		</div>
-		<div class="col-md-4 offset-md-4 top-buffer-less submit-button">
-		  <input type="submit" id="home_submit" value="Search">
+		<div class="col-md-2 offset-md-5 top-buffer-less submit-button">
+		  <input type="submit" id="home_submit" value="Go">
 		</div>
 	  </form>
 	</div>
