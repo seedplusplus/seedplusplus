@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
-from .forms import LessonForm
+from .forms import LessonForm,CurriculumForm
 from .functions import form_validate_and_save, has_perm, set_perm
 from .models import Lesson
 import logging
@@ -129,7 +129,8 @@ def lesson_delete(request, pk):
     lesson.delete()
 
     return redirect('lesson_index')
-'''
+
+@login_required()
 def curriculum_new(request):
 
     if request.method == "POST":
@@ -145,7 +146,16 @@ def curriculum_new(request):
     }
     return render(request, "curriculum_new.html", context)
 
-'''
+def curriculum_detail(request, pk):
+    curriculum = curriculum.objects.get(pk=pk)
+    # comments = Comment.objects.filter(lesson=lesson)
+    context = {
+        "curriculum": curriculum,
+        # "comments": comments,
+        "current":'detail',
+
+    }
+    return render(request, "curriculum_detail.html", context)
 
 def get_queryset(self): # new
     query = self.request.GET.get('q')

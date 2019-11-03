@@ -1,5 +1,5 @@
 from django import forms
-from lesson.models import Lesson
+from lesson.models import Lesson,Curriculum
 
 DIFFICULTY_CHOICES = [
     (1, "Never programmed"),
@@ -41,7 +41,7 @@ class LessonForm(forms.ModelForm):
                   'language',
                   'length']
 
-'''
+
 class CurriculumForm(forms.ModelForm):
     difficulty = forms.ChoiceField(
         label="Difficulty",
@@ -52,10 +52,10 @@ class CurriculumForm(forms.ModelForm):
     length = forms.FloatField(label="Length (hours)")
 
     class Meta:
-        model = Lesson
+        model = Curriculum
+        widgets = {'lessons': forms.CheckboxSelectMultiple(),}
         fields = ['title',
                   'description',
+                  'lessons',
                   'difficulty',
-                  'language',
                   'length']
-'''
