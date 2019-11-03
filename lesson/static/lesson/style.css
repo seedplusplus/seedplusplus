@@ -87,6 +87,13 @@ FAQ PAGE STUFF
 	transition: 350ms;
 }
 
+.faq a:hover{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+	text-decoration:none;
+}
+
 /* Background Formatting*/
 
 #home-background{

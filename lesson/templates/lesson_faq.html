@@ -17,17 +17,31 @@
     <div class="col-md-8" style="height:100%">
 		<div class="faq">
 			<ul>
-			<li onClick="faqclick('faq6')">What Is Seed++?</li>
-				<p id="faq6"> This is where we put what Seed is.</p>
+			<li onClick="faqclick('faq1')">What is Seed++?</li>
+				<p id="faq6"> Seed++ is an organization that seeks to help people find, create, share, and collaborate on open source lessons and courses for teaching introductory lessons in programming and computer science.  </p>
 			<br>
-			<li onClick="faqclick('faq1')">Another important question?</li>
-				<p id="faq1"> uhhhh what's supposed to go on this page?</p>
+			<li onClick="faqclick('faq2')">What can I do when I sign up for Seed++?</li>
+				{% if user.is_authenticated %}
+				<p id="faq2"> After you
+					<a href="{% url 'lesson_dashboard' %}" >sign up
+					</a>, you can create and share your own lessons, as well as create your own curricula!
+				</p>
+				{% else %}
+				<p id="faq2"> After you
+					<a href="{% url 'login' %}">sign up</a>
+					, you can create and share your own lessons, as well as create your own curricula!
+				</p>
+				{% endif %}
 			<br>
-			<li onClick="faqclick('faq2')">Who's Sigfried?</li>
-				<p id="faq2"> Favicon family bruh lorem ipsum life</p>
-			<br>
-			<li onClick="faqclick('faq3')">Where can I find my lessons?</li>
-				<p id="faq3"> Hit up that profile page bruh. ;) </p>
+			<li onClick="faqclick('faq3')">Where can I find my Lessons and Curricula?</li>
+				{% if user.is_authenticated %}
+				<p id="faq3"> You can find your lessons and curricula on your user
+					<a href="{% url 'lesson_dashboard' %}" >dashboard</a> under the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
+				{% else %}
+				<p id="faq3"> You can find your lessons and curricula on your user
+					<a href="{% url 'login' %}">dashboard</a> under the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
+				{% endif %}
+				<p id="faq1"> You can find your lessons and curricula on your user dashboard under the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
 			<br>
 			<li onClick="faqclick('faq4')">How do I make a curriculum?</li>
 				<p id="faq4"> Click that button and do yo thang buu buu</p>
