@@ -488,6 +488,9 @@ PAGE HEADER FADES AND STUFF -------------------------------------------
     to   { opacity: 1; }
 }
 
+#length{
+      font-weight: bold;
+
 /* Internet Explorer */
 @-ms-keyframes fadein {
     from { opacity: 0; }

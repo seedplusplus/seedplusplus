@@ -10,19 +10,6 @@ DIFFICULTY_CHOICES = [
 ]
 
 
-# class LessonForm(forms.Form):
-#     title = forms.CharField(label = "Title", max_length=255)
-#     description = forms.CharField(label="Description", widget=forms.Textarea)
-#     body = forms.CharField(label="body", widget=forms.Textarea)
-#     difficulty = forms.MultipleChoiceField(
-#         label="Difficulty",
-#         widget = forms.RadioSelect,
-#         choices = DIFFICULTY_CHOICES,
-#     )
-#     language = forms.CharField(label="Language")
-#     length = forms.FloatField(label = "Length (hours)")
-#     tags = forms.ModelMultipleChoiceField
-
 class LessonForm(forms.ModelForm):
     difficulty = forms.ChoiceField(
         label="Difficulty",
