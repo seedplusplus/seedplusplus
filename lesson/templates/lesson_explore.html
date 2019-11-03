@@ -48,7 +48,7 @@
             <h2 id="lesson_title">
                 <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
                 <div id='date-text'>
-                    {{ lesson.created_on.date }} &nbsp;
+                    {{ lesson.owner.get_full_name }} &nbsp;
                 </div>
             </h2>
             <div id="mid_lesson">
