@@ -6,6 +6,19 @@ body {
 }
 
 
+.prof-lessons > .row{
+	overflow-x: auto;
+	white-space: nowrap;
+	flex-wrap: nowrap;
+}
+
+.prof-lessons > .row > .card {
+  min-width: initial !important;
+  margin:10px;
+  display: inline-block;
+  float: none;
+}
+
 .profpic img{
   background: red;
   border-radius: 50%;

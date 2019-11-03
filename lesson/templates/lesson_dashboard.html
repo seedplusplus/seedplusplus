@@ -15,48 +15,63 @@
 			! ! ! ATTENTION 2003 KIDS ! ! ! This 👇 is the last year of being a kid 👦👧! Because NEXT 👉YEAR! We gon be T33N4G3RS💁💅!! PARTYING 🎉💃 DRINKING 🍻🍸🍹🍷 MAKING OUT AND SEX 👅💦O_O PERIODS ☹🍫 HEARTBREAKS 💔☹ MIDDLE SCHOOL SOPHOMORES (7️⃣TH GRADE)
 		</div>
 	</div>
-	<!--
-	<div class="col-md-10 top-buffer-less">
-		{% for lesson in Lessons %}
-        <div class="card form-group" id="lesson_card">
-        <div id="card-margin">
-            <h2 id="lesson_title">
-                <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
-                <div id='date-text'>
-                    {{ lesson.created_on.date }} &nbsp;
-                </div>
-            </h2>
-            <div id="mid_lesson">
-                <span id="language-header">
-                    Python69
-                </span>
-                <span id="duration-header">
-                    &lt; 1 hour
-                </span>
-            </div>
-            <!--
-            <div id= "tag-row" class = "row" >
-                {% for tag in lesson.tags.all %}
-                <div id= "tag" class="card col-2 " >
-                <a href="{% url 'lesson_tag' tag.name %}">
-                    {{ tag.name }}
-                </a>&nbsp;
-                </div>
+	
+	<div class="col-md-10 top-buffer-less" >
+        <h1 class="top-buffer-less">Lessons <a href="{% url 'lesson_new' %}">+</a></h1>
+        <div class="prof-lessons">
+            <div class="row">
+        		{% for lesson in Lessons %}
+                    <div class="card form-group " id="lesson_card">
+                        <div id="card-margin">
+                            <h2 id="lesson_title">
+                                <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
+                            </h2>
+                            <div id="mid_lesson">
+                                {% for tag in lesson.tags.all %}
+                                <span id="language-header">
+                                    <a href="{% url 'lesson_tag' tag.name %}" style="color:white">
+                                    {{ tag.name }}
+                                    </a>&nbsp;
+                                </span>
+                                 {% endfor %}
+                            </div>                    
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
-            
-            <p>{{ lesson.body | slice:":400" }}...</p>
         </div>
+
+        <h1 class="top-buffer-less">Curricula <a href="{% url 'curriculum_new' %}">+</a></h1>
+        <div class="prof-lessons">
+            <div class="row">
+                {% for c in Curricula %}
+                    <div class="card form-group " id="lesson_card">
+                        <div id="card-margin">
+                            <h2 id="lesson_title">
+                                <a href="{% url 'curriculum_detail' c.pk%}">{{ c.title }}</a>
+                            </h2>
+                            <div id="mid_lesson">
+                                {% for tag in c.tags.all %}
+                                <span id="language-header">
+                                    <a href="{% url 'lesson_tag' tag.name %}" style="color:white">
+                                    {{ tag.name }}
+                                    </a>&nbsp;
+                                </span>
+                                 {% endfor %}
+                            </div>                    
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
 	</div>
-	-->
+
 </div>
 {% endif %}
 
 {% if not user.is_authenticated %}
 
 {% endif %}
-}
+
 
 {% endblock %}
