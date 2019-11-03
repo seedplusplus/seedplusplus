@@ -3,9 +3,9 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
-from .forms import LessonForm
+from .forms import LessonForm,CurriculumForm
 from .functions import form_validate_and_save, has_perm, set_perm
-from .models import Lesson
+from .models import Lesson,Curriculum
 import logging
 
 logger = logging.getLogger(__name__)
@@ -20,8 +20,10 @@ def lesson_index(request):
 
 def lesson_explore(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
+    #Curricula = Curriculum.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
+        #"Curricula": Curricula,
         "current": 'explore',
     }
     current = 'explore'
@@ -35,6 +37,25 @@ def lesson_about(request):
         "current": 'about',
     }
     return render(request, "lesson_about.html", context)
+
+def lesson_faq(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'faq',
+    }
+    return render(request, "lesson_faq.html", context)
+
+@login_required
+def lesson_dashboard(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    Curricula = Curriculum.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "Curricula": Curricula,
+        "current": 'dashboard',
+    }
+    return render(request, "lesson_dashboard.html", context)
 
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
@@ -127,6 +148,33 @@ def lesson_delete(request, pk):
     lesson.delete()
 
     return redirect('lesson_index')
+
+@login_required()
+def curriculum_new(request):
+
+    if request.method == "POST":
+        form = CurriculumForm(request.POST)
+        curriculum = form_validate_and_save(form, request)
+        if curriculum:
+            return redirect('curriculum_detail', pk=curriculum.pk)
+        else:
+            logger.error("curriculum_new form invalid: {}".format(form.errors))
+
+    context = {
+        "form": CurriculumForm(),
+    }
+    return render(request, "curriculum_new.html", context)
+
+def curriculum_detail(request, pk):
+    curriculum = Curriculum.objects.get(pk=pk)
+    # comments = Comment.objects.filter(lesson=lesson)
+    context = {
+        "curriculum": curriculum,
+        # "comments": comments,
+        "current":'detail',
+
+    }
+    return render(request, "curriculum_detail.html", context)
 
 def get_queryset(self): # new
     query = self.request.GET.get('q')

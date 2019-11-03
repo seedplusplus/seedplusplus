@@ -10,14 +10,15 @@
     <link rel="shortcut icon" href="{% static 'favicon/favicon2.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon/favicon2.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://use.typekit.net/ioz4bwq.css">
+	<script src="{% static 'lesson/main.js' %}"></script>
+
 
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg" id="top-nav">
         <div class="container" style="margin-left: 0">
-            <a class="navbar-brand" href="{% url 'lesson_index' %}">
-                <img height="40px" padding src="{% static "corner_logo2.png"%}" style="position:relative;top:-0px" alt="SEED++">
+            <a class="navbar-brand" href="{% url 'lesson_index' %}" style="padding-left:0!important;padding-right:0!important;">
+                <img height="40px" src="{% static "corner_logo2.png"%}" style="position:relative;top:-0px" alt="SEED++">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -28,35 +29,72 @@
                 <li class="nav-item  {% if current == 'explore' %}active{% endif %}">
                   <a class="nav-link" href="{% url 'lesson_explore' %}">Explore</a>
                 </li>
+				
+				<!-- 
+				
+				NOT READY == ABOUT PAGE
+				
                 <li class="nav-item  {% if current == 'about' %} active {% endif %}">
-                  <a class="nav-link" href="{% url 'lesson_index' %}">About</a>
+                  <a class="nav-link" href="{% url 'lesson_about' %}">About</a>
                 </li>
+				-->
+				
+				
+				<!--
+				
+				NOT READY == FORUM PAGE?
+				
                 <li class="nav-item  {% if current == 'forum' %} active {% endif %}">
                   <a class="nav-link" href="{% url 'lesson_index' %}">Forum</a>
                 </li>
+				
+				<li class="nav-item  {% if current == 'dashboard' %}active{% endif %}">
+                  <a class="nav-link" href="{% url 'lesson_dashboard' %}">Dashboard</a>
+                </li>
+				-->
                 <li class="nav-item {% if current == 'faq' %} active{% endif %}">
-                  <a class="nav-link" href="{% url 'lesson_index' %}">FAQ</a>
+                  <a class="nav-link" href="{% url 'lesson_faq' %}">FAQ</a>
                 </li>
               </ul>
             </div>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+            
+            <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent" style="position: absolute;right: 5px;">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item {% if current == 'signup' %} active{% endif %}">
                   {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-link {% if current == 'dashboard' %} active{% endif %}" href="{% url 'lesson_dashboard' %}">Dashboard</a>
                   {% else %}
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    <a class="nav-link" href="{% url 'login' %}">Log In / Sign Up</a>
+                  {% endif %}
+                </li>
+			  </ul>
+			  <ul class="navbar-nav ml-auto menu-override">
+				<li class="nav-item {% if current == 'signup' %} active{% endif %}">
+                  {% if user.is_authenticated %}
+					<div class="dropdown" id="overridden">
+					  <button onclick="myFunction()" class="dropbtn">
+						<img height="30px" src="{% static "corner-menu.png"%}" alt="MenuDropHere">
+					  </button>
+					  <div id="myDropdown" class="dropdown-content">
+						<a href="{% url 'logout' %}">Logout</a>
+					  </div>
+					</div>
+                  {% else %}
                   {% endif %}
                 </li>
               </ul>
             </div>
         </div>
-
     </nav>
-        {% block page_content %}{% endblock %}
 </body>
+{% block page_content %}{% endblock %}
+<!--
+<footer>
+	<div class ="col-md-12" id="footer_seed">
+		Footer Stuff
+	</div>
+</footer>
+-->
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

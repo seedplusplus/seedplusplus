@@ -10,6 +10,8 @@ def form_validate_and_save(form: django.forms.Form, request: django.http.request
                            **kwargs):
     if form.is_valid():
         result = form.save(commit=False)
+        if(not request.user.is_authenticated):
+            return -1
         result.owner = request.user
         if not edit:
             result.published_date = timezone.now()

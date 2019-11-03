@@ -54,12 +54,18 @@ class Lesson(CommentableObject):
     length = models.FloatField(default=1) # Hours
     tags = TaggableManager()
 
+    def __str__(self):
+        return self.title
+
 
 class Curriculum(CommentableObject):
-    body = models.TextField()
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True)
     lessons = models.ManyToManyField('Lesson', related_name='curricula')
     tags = TaggableManager()
-
+    difficulty = models.SmallIntegerField(default=1) # 1 to 5
+    description = models.TextField(null=True)
+    length = models.FloatField(default=1) # Hours
 
 class Vote(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

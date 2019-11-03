@@ -4,17 +4,151 @@ body {
 	font-family: myriad-pro,sans-serif;
 	color:#362630;
 }
-.top-buffer { 
-	margin-top: 100px;
+
+
+.prof-lessons > .row{
+	overflow-x: auto;
+	white-space: nowrap;
+	flex-wrap: nowrap;
 }
 
-.top-buffer-half { 
-	margin-top: 50px;
+.prof-lessons > .row > .card {
+  min-width: initial !important;
+  margin:10px;
+  display: inline-block;
+  float: none;
+}
+
+.profpic img{
+  background: red;
+  border-radius: 50%;
+  border: 3px solid #40383D;
+  padding:12px;
+  margin: 15px;
+}
+
+.about-profile{
+	background: #F6EDF7;
+	border-radius: 20px;
+	text-align:center;
+	padding:10px;
+	margin-left: 20px;
+	margin-right:20px;
+}
+.about-profile h2{
+	color:#362630;
+	font-size:1.2rem;
+	font-weight:600;
+}
+
+.top-buffer { 
+	padding-top: 170px;
+}
+
+.top-buffer-less { 
+	margin-top: 10px;
 }
 
 .submit-button{
 	width:75%;
 }
+
+/*
+FAQ PAGE STUFF
+*/
+.row{
+	margin-right:0 !important;
+	
+}
+
+.faq ul{
+	display: block;
+	padding:0;
+}
+.faq li {
+	display: block;
+	list-style-type:none;
+	font-weight:600;
+	width:100%;
+	margin: auto;
+	cursor: pointer;
+	font-size: 1.5rem;
+	text-align:center;
+	background-color: #F6EDF7;
+	border-radius: 20px;
+	padding-bottom: 2px;
+	
+}
+
+.faq p {
+	display: block;
+	padding-top:2px;
+	margin:auto;
+	text-align:center;
+	text-decoration:none;
+	font-size: 1rem;
+	z-index: 1;
+	max-height:0px;
+	overflow: hidden;
+	-webkit-transform: perspective(400) rotate3d(1, 0, 0, -90deg);
+	-webkit-transform-origin: 50% 0;
+	-webkit-transition: 350ms;
+	-moz-transition: 350ms;
+	-o-transition: 350ms;
+	transform:perspective(400) rotate3d(1, 0, 0, -90deg);
+	transform-origin: 50% 0;
+	transition: 350ms;
+}
+
+.faq a:hover{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+	text-decoration:none;
+}
+
+/* Background Formatting*/
+
+#home-background{
+	background-image: url("/static/cloud.png");
+	background-position: center 110%;
+	background-size:140% 130%;
+	background-repeat:no-repeat;
+	height:91vh;
+	overflow:hidden;
+	box-shadow:0px 0px 600px white inset;
+	
+}
+#home-background4{
+	background-image: url("/static/cloud2.png");
+	background-position: center 110%;
+	background-size:140% 130%;
+	background-repeat:no-repeat;
+	height:91vh;
+	overflow:hidden;
+	box-shadow:0px 0px 600px white inset;
+	
+}
+
+#home-background2{
+	background-image: url("/static/cloud2.png");
+	background-position: 45% center;
+	width:100%;
+	background-repeat: repeat-y;
+	box-shadow:0px 0px 800px white inset;
+}
+
+#home-background3{
+	background-image: url("/static/cloud2.png");
+	background-position: center bottom;
+	width:100%;
+	height:50vh;
+	background-repeat: repeat-y;
+	box-shadow:0px 0px 800px white inset;
+	
+}
+
+/* End Background Formatting*/
 
 #home_submit{
 	width:50%;
@@ -63,11 +197,21 @@ body {
 	background-color: #00CA00;
 }
 
+#overridden:hover{
+	transition:none!important;
+	-webkit-transition: none!important; /* Safari prior 6.1 */
+	background-color: transparent;
+}
+
 #top-nav a{
 	color: white;
 	font-size: 1.1rem;
 	font-weight: 650;
 	letter-spacing: 1px;
+	border-radius: 20px 20px 0 0;
+	padding-left:15px;
+	padding-bottom:5;
+	padding-right:15px;
 }
 
 #login_button{
@@ -75,10 +219,9 @@ body {
 }
 
 #top-nav li{
-	padding-left:15px;
-	padding-right:15px;
 	margin-top:8px;
-	border-radius: 25px 25px 0px 0px;
+	border-radius: 20px 20px 0px 0px;
+	
 }
 
 .active{
@@ -106,26 +249,71 @@ body {
 
 #left-col-explore{
 	margin-left:30px;
+	border-radius: 20px;
 }
 
 #explore_header{
+	background-image: url("/static/explore-banner.jpg");
+	background-position: center 9%;
+	background-size:100% 250%;
+	bsckground-repeat:no-repeat;
+	padding-bottom:70px;
+	padding-top: 30px;
 	font-weight: 600;
-	font-size: 4rem;
+	font-size: 5rem;
+	text-shadow: 2px 2px 1px #F6EDF7;
 }
+#faq_header{
+	background-image: url("/static/faq-banner.jpg");
+	background-position: center 30%;
+	background-size:100% 750%;
+	bsckground-repeat:no-repeat;
+	padding-bottom:70px;
+	padding-top: 30px;
+	font-weight: 600;
+	font-size: 5rem;
+	text-shadow: 2px 2px 1px #F6EDF7;
+}
+
+.card-header{
+	border-radius: 20px 20px 0 0 !important;
+	font-weight:600! important;
+	color: #F6EDF7 !important;
+	font-size: 1.2rem;
+	text-align: center;
+	padding:0;
+	background-color:#40383D;
+}
+
 
 #filter{
 	background-color: #F6EDF7;
+	border-style:none;
+	border-radius: 20px 20px 20px 20px;
+	margin-left:0;
 }
+
+
+#filter ul{
+	padding:0;
+}
+#filter li{
+	font-weight:600;
+}
+
+/* 
+LESSON CARD FORMATTING	-------------------------------------------
+*/
 
 #lesson_card{
 	background-color: #F6EDF7;
-	border-radius: 20px;
+	border-style:none;
+	border-radius: 20px 20px 20px 20px;
 }
 
 #lesson_card h2{
 	display: inline-block;
-	font-size: 2.3rem;
-	margin-right:55%;
+	font-size: 1.2rem;
 }
 
 #lesson_card h2 a{
@@ -133,25 +321,38 @@ body {
 }
 
 #mid_lesson{
-	margin-bottom: 20px;
+	font-size: 0.8rem;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 3px;
+	margin-bottom:5px;
 }
 
 #lesson_card p{
 	font-family: myriad-pro,sans-serif;
 	font-style: italic;
-	font-size: 1.4rem;
-	line-height: 1.2;
+	font-size: 1rem;
+	line-height: 1.1;
 
 }
 
 #lesson_title{
-    border-bottom: 4px solid;
+	font-weight:400;
+    border-bottom: 1px solid;
     border-bottom-color: #362630;
+	margin-bottom:0;
     width: 100%;
 }
 
 #lesson_title a{
-	font-weight: 500;
+	font-weight: 600;
+}
+
+#lesson_title a:hover{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+	text-decoration:none;
 }
 
 #card-margin{
@@ -159,36 +360,12 @@ body {
 }
 
 #date-text{
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	display: inline;
 	float:right;
 }
 
-#language-header{
-	color:white;
-	background-color: #00CA00;
-	font-weight: 600;
-	font-size: 1.25rem;
-	text-align: center;
-	border-radius: 15px;
-	padding: 3px;
-	padding-left: 10px;
-	padding-right: 10px;
-	display: inline-block;
-}
 
-#duration-header{
-	color:white;
-	background-color: #A44800;
-	font-weight: 600;
-	font-size: 1.25rem;
-	text-align: center;
-	border-radius: 15px;
-	padding: 3px;
-	padding-left: 10px;
-	padding-right: 10px;
-	display: inline-block;
-}
 
 #tag{
 	height: 100%
@@ -215,6 +392,237 @@ body {
 #difficulty{
       font-weight: bold;
 }
+
+#sort-bar{
+	background-color:#40383D !important;
+	border-radius:20px !important;
+	color: #F6EDF7;
+	border-style:none;
+	padding-top: 1px;
+	padding-bottom:3px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	font-size: 1.2rem;
+	font-weight: 600;
+	width:100%;
+}
+
+/* 
+END LESSON CARD FORMATTING
+*/
+
+/*
+CURRICULUM CARD FORMATTING	-------------------------------------------
+*/
+
+
+#curriculum_title{
+	background-color:#40383D;
+	color:#F6EDF7;
+	border-style: none;
+	border-radius: 20px 20px 0 0;
+}
+#curriculum_title p{
+	padding-bottom:0;
+}
+
+
+
+
+
+/*
+END CURRICULUM CARD FORMATTING
+*/
+
+/*
+PAGE HEADER FADES AND STUFF -------------------------------------------
+*/
+
+
+#language-header{
+	color:white;
+	background-color: #00CA00;
+	font-weight: 500;
+	text-align: center;
+	border-radius: 15px;
+	padding: 1px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: inline-block;
+}
+
+#duration-header{
+	color:white;
+	background-color: #A44800;
+	font-weight: 500;
+	text-align: center;
+	border-radius: 15px;
+	padding: 1px;
+	padding-left: 7px;
+	padding-right: 7px;
+	display: inline-block;
+}
+
+#header_fade {
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+#length{
+      font-weight: bold;
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/*
+END PAGE HEADER STUFF 
+*/
+
+/* 
+DROPDOWN FORMATTING	-------------------------------------------
+ */
+
+.menu-override li:hover{
+	-webkit-transition: background-color .5s; /* Safari prior 6.1 */
+	transition: background-color .5s;
+	background-color: transparent!important;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  margin:10px 10px 10px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  margin-top:3px;
+  padding-bottom: 1;
+  right:0;
+  display: none;
+  position: absolute;
+  background-color: #40383D;
+  z-index: 1;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding-right:5px;
+  padding-left:5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	border-radius:0px!important;
+	background-color: #362630;
+	width: inherit;
+	border-radius: 0 0 10px 10px!important;
+	}
+
+/* Show the dropdown menu */
+.show {display:block;}
+
+
+/* 
+LOGIN FORMATTING -------------------------------------------
+*/
+
+.login-format {
+	margin:15px;
+}
+
+.login-format h2{
+	font-size:2rem;
+	font-weight:600;
+}
+
+.login-format form{
+	padding-left:5px;
+	box-sizing: border-box;
+	border-radius:20px;
+}
+
+.login-format input[type=text]{
+	background: none;
+	padding-left:10px;
+	padding-left:5px;
+	border: 2px red solid;
+	border-radius:20px;
+	width:100%;
+}
+
+.login-format input[type=password]{
+	background: none;
+	padding-left:10px;
+	background-color:#FFFFFF;
+	border: 2px red solid;
+	border-radius:20px;
+	width:100%;
+}
+
+.login-format a{
+	font-size:1rem;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	font-weight:600;
+	margin-left: 15%;
+	text-align:right;
+}
+
+.login-format button{
+	border-radius:10px;
+	background-color:#F6EDF7;
+	font-size:1rem;
+	text-decoration: none;
+	font-weight:600;
+	text-align:left;
+}
+
+/* 
+END LOGIN FORMATTING -------------------------------------------
+*/
 
 /*
 Myriad Pro Bold
