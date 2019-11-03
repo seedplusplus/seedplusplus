@@ -87,8 +87,20 @@ FAQ PAGE STUFF
 	transition: 350ms;
 }
 
+/* Background Formatting*/
+
 #home-background{
 	background-image: url("/static/cloud.png");
+	background-position: center 110%;
+	background-size:140% 130%;
+	background-repeat:no-repeat;
+	height:91vh;
+	overflow:hidden;
+	box-shadow:0px 0px 600px white inset;
+	
+}
+#home-background4{
+	background-image: url("/static/cloud2.png");
 	background-position: center 110%;
 	background-size:140% 130%;
 	background-repeat:no-repeat;
@@ -115,6 +127,8 @@ FAQ PAGE STUFF
 	box-shadow:0px 0px 800px white inset;
 	
 }
+
+/* End Background Formatting*/
 
 #home_submit{
 	width:50%;
@@ -248,7 +262,7 @@ FAQ PAGE STUFF
 	font-size: 1.2rem;
 	text-align: center;
 	padding:0;
-	background-color:#362630;
+	background-color:#40383D;
 }
 
 
@@ -266,6 +280,10 @@ FAQ PAGE STUFF
 #filter li{
 	font-weight:600;
 }
+
+/* 
+LESSON CARD FORMATTING	-------------------------------------------
+*/
 
 #lesson_card{
 	background-color: #F6EDF7;
@@ -310,6 +328,13 @@ FAQ PAGE STUFF
 	font-weight: 600;
 }
 
+#lesson_title a:hover{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+	text-decoration:none;
+}
+
 #card-margin{
 	margin:20px;
 }
@@ -319,6 +344,8 @@ FAQ PAGE STUFF
 	display: inline;
 	float:right;
 }
+
+
 
 #tag{
 	height: 100%
@@ -346,8 +373,49 @@ FAQ PAGE STUFF
       font-weight: bold;
 }
 
+#sort-bar{
+	background-color:#40383D !important;
+	border-radius:20px !important;
+	color: #F6EDF7;
+	border-style:none;
+	padding-top: 1px;
+	padding-bottom:3px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	font-size: 1.2rem;
+	font-weight: 600;
+	width:100%;
+}
+
+/* 
+END LESSON CARD FORMATTING
+*/
+
 /*
-Page Headers Fades n Stuff
+CURRICULUM CARD FORMATTING	-------------------------------------------
+*/
+
+
+#curriculum_title{
+	background-color:#40383D;
+	color:#F6EDF7;
+	border-style: none;
+	border-radius: 20px 20px 0 0;
+}
+#curriculum_title p{
+	padding-bottom:0;
+}
+
+
+
+
+
+/*
+END CURRICULUM CARD FORMATTING
+*/
+
+/*
+PAGE HEADER FADES AND STUFF -------------------------------------------
 */
 
 
@@ -376,11 +444,11 @@ Page Headers Fades n Stuff
 }
 
 #header_fade {
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
 }
 
 @keyframes fadein {
@@ -412,23 +480,12 @@ Page Headers Fades n Stuff
     to   { opacity: 1; }
 }
 /*
-END PAGE HEADER STUFF
+END PAGE HEADER STUFF 
 */
 
-#sort-bar{
-	background-color:#362630 !important;
-	border-radius:20px !important;
-	color: #F6EDF7;
-	border-style:none;
-	padding-top: 1px;
-	padding-bottom:3px;
-	padding-left: 20px;
-	margin-bottom: 10px;
-	font-size: 1.2rem;
-	font-weight: 600;
-	width:100%;
-}
-/* Dropdown Button */
+/* 
+DROPDOWN FORMATTING	-------------------------------------------
+ */
 
 .menu-override li:hover{
 	-webkit-transition: background-color .5s; /* Safari prior 6.1 */
@@ -481,8 +538,13 @@ END PAGE HEADER STUFF
 	border-radius: 0 0 10px 10px!important;
 	}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu */
 .show {display:block;}
+
+
+/* 
+LOGIN FORMATTING -------------------------------------------
+*/
 
 .login-format {
 	margin:15px;
@@ -534,6 +596,11 @@ END PAGE HEADER STUFF
 	font-weight:600;
 	text-align:left;
 }
+
+/* 
+END LOGIN FORMATTING -------------------------------------------
+*/
+
 /*
 Myriad Pro Bold
 font-family:;
