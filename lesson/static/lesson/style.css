@@ -164,7 +164,7 @@ FAQ PAGE STUFF
 
 #home_text{
 	text-align: center;
-	color:#362630;
+	color:#40383D;
 	font-size: 6.5rem;
 	font-weight: 650;
 	padding-bottom: 0;
@@ -617,6 +617,10 @@ DROPDOWN FORMATTING	-------------------------------------------
 /* Show the dropdown menu */
 .show {display:block;}
 
+
+/*
+END DROPDOWN FORMATTING
+*/
 
 /* 
 LOGIN FORMATTING -------------------------------------------

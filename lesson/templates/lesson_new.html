@@ -5,13 +5,13 @@ New Lesson
 {% endblock %}
 
 {% block page_content %}
-
-    <h1>New Lesson</h1>
+<div class="col-md-3 login-format">
+    <h1 style="font-weight:600">New Lesson</h1>
     <hr>
     <form action="{% url 'lesson_new' %}" method="post" >
         {% csrf_token %}
         {% include "lesson_edit_form_template.html" %}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-
+</div>
 {% endblock %}

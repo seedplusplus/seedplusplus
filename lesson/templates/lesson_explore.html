@@ -48,29 +48,28 @@
             <h2 id="lesson_title">
                 <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
                 <div id='date-text'>
-                    {{ lesson.owner.get_username }} &nbsp;
+				posted by: {{ lesson.owner.get_username }} &nbsp;
                 </div>
             </h2>
+			<!--
             <div id="mid_lesson">
                 <span id="language-header">
-                    Python69
+                    
                 </span>
                 <span id="duration-header">
-                    &lt; 1 hour
                 </span>
             </div>
-            <!--
-            <div id= "tag-row" class = "row" >
+            -->
+            <div id= "tag-row" class = "row" style="margin-top:3px;margin:0">
                 {% for tag in lesson.tags.all %}
-                <div id= "tag" class="card col-2 " >
-                <a href="{% url 'lesson_tag' tag.name %}">
+                <div id= "mid_lesson" style="margin-top:3px!important;margin:0">
+                <a id="language-header" style="margin:0;" href="{% url 'lesson_tag' tag.name %}">
                     {{ tag.name }}
                 </a>&nbsp;
                 </div>
                 {% endfor %}
             </div>
-            -->
-            <p>{{ lesson.body | slice:":400" }}...</p>
+            <p style="margin:0;">{{ lesson.body | slice:":400" }}...</p>
         </div>
         </div>
         {% endfor %}

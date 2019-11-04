@@ -12,7 +12,9 @@
 		</div>
 		<div class= "card about-profile">
 			<h2>{{user.get_username}}</h2>
-			
+			<p>This is where a user's bio will be displayed. 
+			<br>This may include but is not limited to: information about their experience in computer science, the number of contributions to Seed++ that they have made, fun facts, etc.
+			</p>
 		</div>
 	</div>
 	<div class="col-md-10 top-buffer-less" >
@@ -21,6 +23,7 @@
 			<div class="prof-lessons" style="padding-left:15px">
 				<div class="row">
 					{% for lesson in Lessons %}
+						{% if user.get_username == lesson.owner.get_username %}
 						<div class="card form-group " id="lesson_card">
 							<div id="card-margin">
 								<h2 id="lesson_title">
@@ -29,7 +32,7 @@
 								<div id="mid_lesson">
 									{% for tag in lesson.tags.all %}
 									<span id="language-header">
-										<a href="{% url 'lesson_tag' tag.name %}" style="color:white">
+										<a id="language-header" style="margin:0;" href="{% url 'lesson_tag' tag.name %}">
 										{{ tag.name }}
 										</a>&nbsp;
 									</span>
@@ -37,6 +40,7 @@
 								</div>                    
 							</div>
 						</div>
+						{% endif %}
 					{% endfor %}
 				</div>
 			</div>
