@@ -15,22 +15,51 @@
     <div id = "left-col-explore" class = "col-md-2">
 		<div class="card" id="filter">
 			<div class="card-header" id="filter-header">Filters</div>
-				<div class="card-body">
-					<ul style="list-style-type:none">
-						<li id="length">Length</li>
-						<input type="checkbox" name="less-than-1"> Less than 1 hour<br>
-						<input type="checkbox" name="1 hour"> 1 hour<br>
-						<input type="checkbox" name="2 hour"> 2 hours<br>
-						<li id="language">Language </li>
-						<input type="checkbox" name="python"> Python<br>
-						<input type="checkbox" name="c++"> C++<br>
-						<input type="checkbox" name="java"> Java<br>
-						<li id="difficulty">Difficulty</li>
-						<input type="checkbox" name="beginner"> Beginner<br>
-						<input type="checkbox" name="intermediate"> Intermediate<br>
-						<input type="checkbox" name="advanced"> Advanced<br>
-						</ul>
-				</div> 
+                {% if search_text %}
+    				<form action="{% url 'apply_filters' search_text %}" method="get">
+                        <div class="card-body">
+                            <ul style="list-style-type:none">
+                                <li id="length">Length</li>
+                                <input type="checkbox" name="length" value="less-than-1"> Less than 1 hour<br>
+                                <input type="checkbox" name="length" value="1-hour"> 1 hour<br>
+                                <input type="checkbox" name="length" value="2-hour"> 2 hours<br>
+                                <li id="language">Language</li>
+                                <input type="checkbox" name="language" value="python"> Python<br>
+                                <input type="checkbox" name="language" value="c++"> C++<br>
+                                <input type="checkbox" name="language" value="java"> Java<br>
+                                <li id="difficulty">Difficulty</li>
+                                <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
+                                <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
+                                <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
+                            </ul>
+                        </div> 
+                        <div class="col-md-4 offset-md-3 submit-button">
+                          <input type="submit" id="filter_submit" value="Apply Filters">
+                        </div>
+                    </form>
+                {% else %}
+                    <form action="{% url 'apply_filters' %}" method="get">
+                        <div class="card-body">
+                            <ul style="list-style-type:none">
+                                <li id="length">Length</li>
+                                <input type="checkbox" name="length" value="less-than-1"> Less than 1 hour<br>
+                                <input type="checkbox" name="length" value="1-hour"> 1 hour<br>
+                                <input type="checkbox" name="length" value="2-hour"> 2 hours<br>
+                                <li id="language">Language</li>
+                                <input type="checkbox" name="language" value="python"> Python<br>
+                                <input type="checkbox" name="language" value="c++"> C++<br>
+                                <input type="checkbox" name="language" value="java"> Java<br>
+                                <li id="difficulty">Difficulty</li>
+                                <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
+                                <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
+                                <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
+                            </ul>
+                        </div> 
+                        <div class="col-md-4 offset-md-3 submit-button">
+                          <input type="submit" id="filter_submit" value="Apply Filters">
+                        </div>
+                    </form>
+                {% endif %}
 			</div>
 		</div>
     <div class="col-md-8">

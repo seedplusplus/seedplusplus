@@ -1,5 +1,6 @@
 from django import forms
 from lesson.models import Lesson,Curriculum
+from .models import *
 
 DIFFICULTY_CHOICES = [
     (1, "Never programmed"),
@@ -46,3 +47,8 @@ class CurriculumForm(forms.ModelForm):
                   'lessons',
                   'difficulty',
                   'length']
+        
+class ProfPicForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_pic']

@@ -24,6 +24,10 @@ SECRET_KEY = '81*d__y)09v%34v60dqoxfaeh!$)_q7#1h_-iee+cp^-f2ljrp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_URL = '/media/'
+AUTH_PROFILE_MODULE = 'lesson.UserProfile'
+
 ALLOWED_HOSTS = [
     'mcmant.pythonanywhere.com',
     '127.0.0.1',

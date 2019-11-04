@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.http import HttpResponse 
+from django.core.files.storage import FileSystemStorage
 
-from .forms import LessonForm,CurriculumForm
+from .forms import *
 from .functions import form_validate_and_save, has_perm, set_perm
-from .models import Lesson,Curriculum
+from .models import Lesson,Curriculum,UserProfile
 import logging
 
 logger = logging.getLogger(__name__)
@@ -57,6 +59,29 @@ def lesson_dashboard(request):
     }
     return render(request, "lesson_dashboard.html", context)
 
+@login_required
+def upload_prof_pic(request):
+    context = {"current": 'uploadPic'}
+    return render(request, "upload_prof_pic.html", context)
+
+@login_required
+def prof_pic_view(request,username):
+    if request.method == 'POST' and request.FILES['profpic']:
+        profpic = request.FILES['profpic']
+        fs = FileSystemStorage()
+        filename = fs.save(profpic.name, profpic)
+        upload = fs.url(filename)
+        
+        current_user, created = UserProfile.objects.get_or_create(user=request.user)
+        current_user.profile_pic = upload
+        current_user.save()
+        return render(request, 'lesson_dashboard.html', {'profile_pic': upload})
+        
+    return render(request, 'lesson_dashboard.html', {'profile_pic': None})
+
+#def success(request):
+    #return HttpResponse('successfully uploaded')
+
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
         tags__name__contains=tag
@@ -99,6 +124,43 @@ def lesson_search(request):
     }
     return render(request, "lesson_explore.html", context)
 
+def apply_filters(request, search_text=None):
+    
+    if search_text != None:
+        Lessons = search_lessons(search_text)
+    else:
+        Lessons = Lesson.objects.all().order_by('-created_on')    
+    
+    length_filters = request.GET.getlist('length')
+    language_filters = request.GET.getlist('language')
+    difficulty_filters = request.GET.getlist('difficulty')
+    
+    length_map = {0 : "less-than-1",
+                    1 : "1-hour",
+                    2 : "2-hour"}
+    
+    difficulty_map = {0 : "beginner",
+                    1 : "intermediate",
+                    2 : "advanced"}
+        
+    # Filter duration    
+    if len(length_filters) != 0:
+        Lessons = [x for x in Lessons if length_map[min(2,int(x.length))] in length_filters]
+    
+    # Filter language
+    if len(language_filters) != 0:
+        Lessons = [x for x in Lessons if x.language in language_filters]
+    
+    # Filter difficulty
+    if len(difficulty_filters) != 0:
+        Lessons = [x for x in Lessons if x.difficulty in difficulty_filters]
+    
+    context = {
+        "Lessons": Lessons,
+        "current":'explore',
+        "search_text": search_text
+    }
+    return render(request, "lesson_explore.html", context)
 
 @login_required
 def lesson_new(request):

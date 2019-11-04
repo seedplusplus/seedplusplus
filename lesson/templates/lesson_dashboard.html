@@ -6,11 +6,21 @@
 {% if user.is_authenticated %}
 <div class= "row" id="home-background2">
 	<!-- Profile Pic GOES HERE --> 
+	
 	<div class="col-md-2">
 		<div class="profpic">
-			<img height="200px" src="{% static "sigfried.png"%}" alt="Sigfried Goes Here">
+			{% if user.userprofile.profile_pic %}
+				<img height="200px" src="{{ user.userprofile.profile_pic }}">
+			{% else %}
+				<img height="200px" src="{% static "sigfried.png"%}" alt="Sigfried Goes Here">
+			{% endif %}
 		</div>
-		<div class= "card about-profile">
+		<div class="upload-pic" style="padding-left:40px">
+			<form action="upload_prof_pic" method="GET">
+				<button type="submit">Upload New Picture</button>
+			</form>
+		</div>
+		<div class= "card about-profile top-buffer-less">
 			<h2>{{user.get_username}}</h2>
 			<p>This is where a user's bio will be displayed. 
 			<br>This may include but is not limited to: information about their experience in computer science, the number of contributions to Seed++ that they have made, fun facts, etc.
