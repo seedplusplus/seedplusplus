@@ -10,6 +10,9 @@ body {
 	overflow-x: auto;
 	white-space: nowrap;
 	flex-wrap: nowrap;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom:2px;
 }
 
 .prof-lessons > .row > .card {
@@ -427,12 +430,65 @@ CURRICULUM CARD FORMATTING	-------------------------------------------
 }
 
 
-
-
-
 /*
 END CURRICULUM CARD FORMATTING
 */
+
+/*
+DASHBOARD FORMATTING STUFF -------------------------------------------
+*/
+
+.dashboard_back{
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom:15px;
+	background-color: #40383D;
+	border-radius:20px;
+	margin-bottom:10px;
+	
+}
+
+.dashboard_back h1{
+	color:#F6EDF7
+}
+
+#plus-button{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+	text-decoration:none;
+}
+
+/*
+END DASHBOARD FORMATTING STUFF
+*/
+
+/*
+SCROLLBAR STUFF -------------------------------------------
+*/
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+  height:15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #F6EDF7;
+  box-shadow: inset 0 0 5px grey;
+  margin-left:5px!important;
+  margin-right:5px!important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #362630;
+}
+
+/*
+END SCROLLBAR STUFF
+*/
+
 
 /*
 PAGE HEADER FADES AND STUFF -------------------------------------------
@@ -487,9 +543,6 @@ PAGE HEADER FADES AND STUFF -------------------------------------------
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-
-#length{
-      font-weight: bold;
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
