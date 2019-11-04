@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+
 
 
 class SignUp(generic.CreateView):
@@ -16,7 +18,9 @@ def profile_page(request):
 
 
 @login_required
-def delete(request):
+def delete_self(request):
     user = request.user
     user.is_active = False
-    redirect('logout')
+    user.save()
+
+    return redirect('logout')
