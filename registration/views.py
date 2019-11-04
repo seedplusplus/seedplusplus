@@ -12,4 +12,11 @@ class SignUp(generic.CreateView):
     
 def profile_page(request):
     context = {}
-    return render(request, "profile.html", context)    
+    return render(request, "profile.html", context)
+
+
+@login_required
+def delete(request):
+    user = request.user
+    user.is_active = False
+    redirect('logout')
