@@ -61,8 +61,9 @@
 			<p>
 				This is where comments would go... if we had any!
 			</p>
-		  
+			{% if user.is_authenticated and lesson.owner.get_username == user.get_username %}
 			<a href="{% url 'lesson_delete' lesson.pk%}"> Delete </a>
+			{% endif %}
 			</div>
 			</div>
 		</div>

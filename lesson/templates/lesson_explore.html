@@ -48,7 +48,7 @@
             <h2 id="lesson_title">
                 <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
                 <div id='date-text'>
-				posted by: {{ lesson.owner.get_username }} &nbsp;
+				{{ lesson.created_on.date }} &nbsp;
                 </div>
             </h2>
 			<!--
@@ -60,15 +60,16 @@
                 </span>
             </div>
             -->
-            <div id= "tag-row" class = "row" style="margin-top:3px;margin:0">
-                {% for tag in lesson.tags.all %}
-                <div id= "mid_lesson" style="margin-top:3px!important;margin:0">
-                <a id="language-header" style="margin:0;" href="{% url 'lesson_tag' tag.name %}">
-                    {{ tag.name }}
-                </a>&nbsp;
-                </div>
-                {% endfor %}
-            </div>
+            <div id= "mid_lesson" style="margin-top:2px!important; margin-bottom:10px!important">
+				{% for tag in lesson.tags.all|slice:":3" %}
+					<a id="language-header" style="margin:0;" href="{% url 'lesson_tag' tag.name %}">
+					{{ tag.name }}
+					</a>&nbsp;
+					{% endfor %}
+					<div id='date-text' style="margin:0!important; vertical-align:text-top;font-style:italic; font-size:0.9rem!important;">
+					{{ lesson.owner.get_username }}
+					</div>
+			</div>
             <p style="margin:0;">{{ lesson.body | slice:":400" }}...</p>
         </div>
         </div>
