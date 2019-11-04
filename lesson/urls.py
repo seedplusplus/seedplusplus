@@ -1,4 +1,7 @@
-from django.urls import path
+from django.contrib import admin 
+from django.urls import path 
+from django.conf import settings 
+from django.conf.urls.static import static 
 from . import views
 
 urlpatterns = [
@@ -15,5 +18,12 @@ urlpatterns = [
     path("lessons/faq/", views.lesson_faq, name="lesson_faq"),
     path("curriculum/new/", views.curriculum_new, name="curriculum_new"),
     path("curriculum/<int:pk>/", views.curriculum_detail, name="curriculum_detail"),
-	path("dashboard",views.lesson_dashboard,name="lesson_dashboard"),
+    path("dashboard",views.lesson_dashboard, name="lesson_dashboard"),
+    path("lessons/filters/<search_text>",views.apply_filters, name="apply_filters"),
+    path("lessons/filters/",views.apply_filters, name="apply_filters"),
+    path("upload_prof_pic",views.upload_prof_pic, name="upload_prof_pic"),
+    path("image_upload/<username>", views.prof_pic_view, name="image_upload"), 
    ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

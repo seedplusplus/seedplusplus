@@ -13,6 +13,10 @@ class UserCreatedObject(models.Model):
     owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='images/', null=True)
 
 
 class Comment(UserCreatedObject):
