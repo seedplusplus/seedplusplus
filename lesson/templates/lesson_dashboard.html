@@ -10,14 +10,14 @@
 	<div class="col-md-2">
 		<div class="profpic">
 			{% if user.userprofile.profile_pic %}
-				<img height="190px" src="{{ user.userprofile.profile_pic }}" style="padding:0;">
+				<img src="{{ user.userprofile.profile_pic }}">
 			{% else %}
-				<img height="190px" src="{% static "sigfried.png"%}" alt="Sigfried Goes Here">
+				<img src="{% static "sigfried.png"%}" alt="Sigfried Goes Here" style="padding:0; max-height:190px">
 			{% endif %}
 		</div>
 		<div class="upload-pic" style="margin-left:45px">
 			<form action="upload_prof_pic" method="GET">
-				<button style="margin-bottom:5px" type="submit">Upload New Picture</button>
+				<button style="margin-bottom:5px"type="submit">Upload New Picture</button>
 			</form>
 		</div>
 		<div class= "card about-profile top-buffer-less">
@@ -60,6 +60,7 @@
 		<div class="prof-lessons" style="padding-left:15px">
 			<div class="row">
 				{% for c in Curricula %}
+					{% if user.get_username == lesson.owner.get_username %}
 					<div class="card form-group " id="lesson_card">
 						<div id="card-margin">
 							<h2 id="lesson_title">
@@ -76,6 +77,7 @@
 							</div>                    
 						</div>
 					</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 		</div>

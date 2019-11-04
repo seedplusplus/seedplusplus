@@ -22,13 +22,25 @@ body {
   float: none;
 }
 
-.profpic img{
-  background: green;
-  border-radius: 50%;
+.profpic{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
   border: 3px solid #40383D;
-  padding:12px;
+  border-radius: 50%;
+  background: green;
   margin: 15px;
   margin-left: 20px!important;
+}
+
+.profpic img{
+  display: inline;
+  margin: 0 auto;
+  margin-left: -33%; //centers the image
+  height: 100%;
+  width: auto;
+  max-height:200px;
 }
 
 .about-profile{
