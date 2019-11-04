@@ -1,10 +1,17 @@
-/*this works*/
+/*
+
+STYLE.CSS USED ACROSS ENTIRE SITE (IN DAY MODE?)
+
+*/
 body {
 	background: white !important;
 	font-family: myriad-pro,sans-serif;
 	color:#362630;
 }
 
+/*
+PROFILE INFORMATION -------------------------------------------
+*/
 
 .prof-lessons > .row{
 	overflow-x: auto;
@@ -37,7 +44,6 @@ body {
 .profpic img{
   display: inline;
   margin: 0 auto;
-  margin-left: -33%; //centers the image
   height: 100%;
   width: auto;
   max-height:200px;
@@ -70,7 +76,11 @@ body {
 }
 
 /*
-FAQ PAGE STUFF
+END PROFILE INFORMATION
+*/
+
+/*
+FAQ PAGE STUFF -------------------------------------------
 */
 .row{
 	margin-right:0 !important;
@@ -123,7 +133,9 @@ FAQ PAGE STUFF
 	text-decoration:none;
 }
 
-/* Background Formatting*/
+/* 
+BACKGROUND FORMATTING -------------------------------------------
+*/
 
 #home-background{
 	background-image: url("/static/cloud.png");
@@ -164,7 +176,9 @@ FAQ PAGE STUFF
 	
 }
 
-/* End Background Formatting*/
+/* 
+END BACKGROUND FORMATTING
+*/
 
 #home_submit{
 	width:50%;
