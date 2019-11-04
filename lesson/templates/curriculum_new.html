@@ -5,7 +5,7 @@ New Lesson
 {% endblock %}
 
 {% block page_content %}
-
+<div class="col-md-3 login-format">
     <h1>New Curriculum</h1>
     <hr>
     <form action="{% url 'curriculum_new' %}" method="post">
@@ -13,5 +13,5 @@ New Lesson
         {% include "curriculum_edit_form_template.html" %}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-
+<div>
 {% endblock %}

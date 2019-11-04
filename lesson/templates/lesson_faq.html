@@ -33,6 +33,15 @@
 				</p>
 				{% endif %}
 			<br>
+			<li onClick="faqclick('faq4')">How do I make Lessons and Curricula?</li>
+				{% if user.is_authenticated %}
+				<p id="faq4"> You can make lessons and curricula in your user
+					<a href="{% url 'lesson_dashboard' %}" >dashboard</a> by clicking the <b>+</b> symbol next to the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
+				{% else %}
+				<p id="faq4"> You can make lessons and curricula in your user
+					<a href="{% url 'login' %}">dashboard</a> by clicking the <b>+</b> symbol next to the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
+				{% endif %}
+			<br>
 			<li onClick="faqclick('faq3')">Where can I find my Lessons and Curricula?</li>
 				{% if user.is_authenticated %}
 				<p id="faq3"> You can find your lessons and curricula on your user
@@ -41,10 +50,6 @@
 				<p id="faq3"> You can find your lessons and curricula on your user
 					<a href="{% url 'login' %}">dashboard</a> under the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
 				{% endif %}
-				<p id="faq1"> You can find your lessons and curricula on your user dashboard under the tabs <b>My Lessons</b> and <b>My Curricula</b>. </p>
-			<br>
-			<li onClick="faqclick('faq4')">How do I make a curriculum?</li>
-				<p id="faq4"> Click that button and do yo thang buu buu</p>
 			<br>
 			</ul>
 		</div>

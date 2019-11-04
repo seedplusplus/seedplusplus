@@ -5,13 +5,13 @@ Sign Up
 {% endblock %}
 
 {% block page_content %}
-
- <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
-
+<div class="col-md-2 login-format">
+	<h2>Sign up</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Sign Up</button>
+	</form>
+<div>
 
 {% endblock %}
