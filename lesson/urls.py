@@ -14,15 +14,15 @@ urlpatterns = [
     path("tags/<tag>/", views.lesson_tag, name="lesson_tag"),
     path("lessons/new/", views.lesson_new, name="lesson_new"),
     path("lessons/<int:pk>/delete",views.lesson_delete,name="lesson_delete"),
-    path("lessons/results",views.lesson_search,name="lesson_search"),
+    path("lessons/explore/results",views.lesson_search,name="lesson_search"),
     path("lessons/faq/", views.lesson_faq, name="lesson_faq"),
     path("curriculum/new/", views.curriculum_new, name="curriculum_new"),
     path("curriculum/<int:pk>/", views.curriculum_detail, name="curriculum_detail"),
     path("dashboard",views.lesson_dashboard, name="lesson_dashboard"),
     path("lessons/filters/<search_text>",views.apply_filters, name="apply_filters"),
     path("lessons/filters/",views.apply_filters, name="apply_filters"),
-    path("upload_prof_pic",views.upload_prof_pic, name="upload_prof_pic"),
-    path("image_upload/<username>", views.prof_pic_view, name="image_upload"), 
+    path("dashboard/upload_prof_pic/",views.upload_prof_pic, name="upload_prof_pic"),
+    path("dashboard/image_upload/<username>", views.prof_pic_view, name="image_upload"), 
    ]
 
 if settings.DEBUG:

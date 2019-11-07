@@ -5,7 +5,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView, ListView
 from taggit.managers import TaggableManager
 
-
 class UserCreatedObject(models.Model):
     class Meta:
         abstract = True
@@ -27,8 +26,6 @@ class Comment(UserCreatedObject):
     object_id=models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
-
-
 class Rating(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     obj = GenericForeignKey('content_type', 'object_id')
@@ -39,7 +36,6 @@ class Rating(models.Model):
     object_id=models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
-
 class CommentableObject(UserCreatedObject):
     class Meta:
         abstract = True
@@ -47,7 +43,6 @@ class CommentableObject(UserCreatedObject):
     comments = GenericRelation(Comment, related_query_name='comments')
     ratings = GenericRelation(Rating, related_query_name='ratings')
     avg_rating = models.FloatField(default=0.0)
-
 
 class Lesson(CommentableObject):
     title = models.CharField(max_length=255)
@@ -60,7 +55,6 @@ class Lesson(CommentableObject):
 
     def __str__(self):
         return self.title
-
 
 class Curriculum(CommentableObject):
     title = models.CharField(max_length=255)

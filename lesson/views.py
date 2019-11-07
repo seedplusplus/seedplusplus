@@ -32,6 +32,15 @@ def lesson_explore(request):
     return render(request, "lesson_explore.html", context)
 
 # About page
+def lesson_about(request):
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    context = {
+        "Lessons": Lessons,
+        "current": 'about',
+    }
+    return render(request, "lesson_about.html", context)
+
+# FAQ page
 def lesson_faq(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
