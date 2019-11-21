@@ -17,49 +17,84 @@
 			<div class="card-header" id="filter-header">Filters</div>
                 {% if search_text %}
     				<form action="{% url 'apply_filters' search_text %}" method="get">
+                {% else %}
+                    <form action="{% url 'apply_filters' %}" method="get">
+                {% endif %}
                         <div class="card-body">
                             <ul style="list-style-type:none">
                                 <li id="length">Length</li>
-                                <input type="checkbox" name="length" value="less-than-1"> Less than 1 hour<br>
-                                <input type="checkbox" name="length" value="1-hour"> 1 hour<br>
-                                <input type="checkbox" name="length" value="2-hour"> 2 hours<br>
+                                {% if less_than_1 %}
+                                    <input type="checkbox" name="length" value="less_than_1" checked> Less than 1 hour<br>
+                                {% else %}
+                                    <input type="checkbox" name="length" value="less_than_1"> Less than 1 hour<br>
+                                {% endif %}
+
+                                {% if 1_hour %}
+                                    <input type="checkbox" name="length" value="1_hour" checked> 1 hour<br>
+                                {% else %}
+                                    <input type="checkbox" name="length" value="1_hour"> 1 hour<br>
+                                {% endif %}
+
+                                {% if 2_hour %}
+                                    <input type="checkbox" name="length" value="2_hour" checked> 2 hours<br>
+                                {% else %}
+                                    <input type="checkbox" name="length" value="2_hour"> 2 hours<br>
+                                {% endif %}
+
                                 <li id="language">Language</li>
-                                <input type="checkbox" name="language" value="python"> Python<br>
-                                <input type="checkbox" name="language" value="c++"> C++<br>
-                                <input type="checkbox" name="language" value="java"> Java<br>
+                                {% if python %}
+                                    <input type="checkbox" name="language" value="python" checked> Python<br>
+                                {% else %}
+                                    <input type="checkbox" name="language" value="python"> Python<br>
+                                {% endif %}
+
+                                {% if cplusplus %}
+                                    <input type="checkbox" name="language" value="cplusplus" checked> C++<br>
+                                {% else %}
+                                    <input type="checkbox" name="language" value="cplusplus"> C++<br>
+                                {% endif %}
+
+                                {% if java %}
+                                    <input type="checkbox" name="language" value="java" checked> Java<br>
+                                {% else %}
+                                    <input type="checkbox" name="language" value="java"> Java<br>
+                                {% endif %}
+                                
                                 <li id="difficulty">Difficulty</li>
-                                <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
-                                <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
-                                <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
+                                {% if beginner %}
+                                    <input type="checkbox" name="difficulty" value="beginner" checked> Beginner<br>
+                                {% else %}
+                                    <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
+                                {% endif %}
+
+                                {% if intermediate %}
+                                    <input type="checkbox" name="difficulty" value="intermediate" checked> Intermediate<br>
+                                {% else %}
+                                    <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
+                                {% endif %}
+
+                                {% if advanced %}
+                                    <input type="checkbox" name="difficulty" value="advanced" checked> Advanced<br>
+                                {% else %}
+                                    <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
+                                {% endif %}
+                                
                             </ul>
                         </div> 
                         <div class="col-md-4 offset-md-3 submit-button">
                           <input type="submit" id="filter_submit" value="Apply Filters">
                         </div>
+                        
                     </form>
-                {% else %}
-                    <form action="{% url 'apply_filters' %}" method="get">
-                        <div class="card-body">
-                            <ul style="list-style-type:none">
-                                <li id="length">Length</li>
-                                <input type="checkbox" name="length" value="less-than-1"> Less than 1 hour<br>
-                                <input type="checkbox" name="length" value="1-hour"> 1 hour<br>
-                                <input type="checkbox" name="length" value="2-hour"> 2 hours<br>
-                                <li id="language">Language</li>
-                                <input type="checkbox" name="language" value="Python3"> Python3<br>
-                                <input type="checkbox" name="language" value="C++"> C++<br>
-                                <input type="checkbox" name="language" value="Java"> Java<br>
-                                <li id="difficulty">Difficulty</li>
-                                <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
-                                <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
-                                <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
-                            </ul>
-                        </div> 
-                        <div class="col-md-4 offset-md-3 submit-button" style="margin-bottom:10px">
-                          <input type="submit" id="filter_submit" value="Apply Filters">
+                    {% if search_text %}
+                        <form action="{% url 'lesson_search' search_text %}" method="get">
+                    {% else %}
+                        <form action="{% url 'lesson_explore'  %}" method="get">
+                    {% endif %}
+                        <div class="col-md-4 offset-md-3 submit-button">
+                          <input type="submit" id="filter_submit" value="Clear Filters">
                         </div>
                     </form>
-                {% endif %}
 			</div>
 		</div>
     <div class="col-md-8">
