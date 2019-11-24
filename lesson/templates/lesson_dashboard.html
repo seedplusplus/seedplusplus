@@ -16,7 +16,7 @@
 			{% endif %}
 		</div>
 		<div class="upload-pic" style="margin-left:45px">
-			<form action="upload_prof_pic" method="GET">
+			<form action="{% url 'upload_prof_pic' %}" method="GET">
 				<button style="margin-bottom:5px"type="submit">Upload New Picture</button>
 			</form>
 		</div>

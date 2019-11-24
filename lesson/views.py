@@ -12,6 +12,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Landing page
 def lesson_index(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
@@ -20,18 +21,17 @@ def lesson_index(request):
     }
     return render(request, "lesson_index.html", context)
 
+# Explore lesson page
 def lesson_explore(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
-    #Curricula = Curriculum.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
-        #"Curricula": Curricula,
         "current": 'explore',
     }
     current = 'explore'
-    #print(current)
     return render(request, "lesson_explore.html", context)
 
+# About page
 def lesson_about(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
@@ -40,6 +40,7 @@ def lesson_about(request):
     }
     return render(request, "lesson_about.html", context)
 
+# FAQ page
 def lesson_faq(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
     context = {
@@ -48,6 +49,7 @@ def lesson_faq(request):
     }
     return render(request, "lesson_faq.html", context)
 
+# User dashboard page
 @login_required
 def lesson_dashboard(request):
     Lessons = Lesson.objects.all().order_by('-created_on')
@@ -59,11 +61,13 @@ def lesson_dashboard(request):
     }
     return render(request, "lesson_dashboard.html", context)
 
+# Redirect function to update profile picture
 @login_required
 def upload_prof_pic(request):
     context = {"current": 'uploadPic'}
     return render(request, "upload_prof_pic.html", context)
 
+# View for uploading picture for profile
 @login_required
 def prof_pic_view(request,username):
     if request.method == 'POST' and request.FILES['profpic']:
@@ -79,9 +83,7 @@ def prof_pic_view(request,username):
         
     return render(request, 'lesson_dashboard.html', {'profile_pic': None})
 
-#def success(request):
-    #return HttpResponse('successfully uploaded')
-
+# Lesson tag page
 def lesson_tag(request, tag):
     lessons = Lesson.objects.filter(
         tags__name__contains=tag
@@ -96,24 +98,30 @@ def lesson_tag(request, tag):
     current = 'tag'
     return render(request, "lesson_tag.html", context)
 
-
+# Lesson read page
 def lesson_detail(request, pk):
     lesson = Lesson.objects.get(pk=pk)
-    # comments = Comment.objects.filter(lesson=lesson)
     context = {
         "lesson": lesson,
-        # "comments": comments,
         "current":'detail',
 
     }
     return render(request, "lesson_detail.html", context)
 
-
-def lesson_search(request):
-    query = SearchQuery(request.GET.get('home_search'))
+def search_lessons(search_text):
+    query = SearchQuery(search_text)
     vector = SearchVector('title','description','body','language','difficulty','tags','length')
     weights_ = [1.0,0.4,0.2,1.0,0.1,1.0,0.1]
-    results = Lesson.objects.annotate(rank=SearchRank(vector,query,weights=weights_)).filter(rank__gte=0.01).order_by('-rank')
+    
+    return Lesson.objects.annotate(rank=SearchRank(vector,query,weights=weights_)).filter(rank__gte=0.01).order_by('-rank')
+    
+
+# Lesson search
+def lesson_search(request,search_text=None):
+    if search_text == None:
+        search_text = request.GET.get('home_search')
+    
+    results = search_lessons(search_text)
     
     # Remove duplicates
     results = list( dict.fromkeys(results) )
@@ -121,9 +129,11 @@ def lesson_search(request):
     context = {
         "Lessons": results,
         "current":'search',
+        "search_text":search_text,
     }
     return render(request, "lesson_explore.html", context)
 
+# Filters (may become advanced search)
 def apply_filters(request, search_text=None):
     
     if search_text != None:
@@ -135,9 +145,9 @@ def apply_filters(request, search_text=None):
     language_filters = request.GET.getlist('language')
     difficulty_filters = request.GET.getlist('difficulty')
     
-    length_map = {0 : "less-than-1",
-                    1 : "1-hour",
-                    2 : "2-hour"}
+    length_map = {0 : "less_than_1",
+                    1 : "1_hour",
+                    2 : "2_hour"}
     
     difficulty_map = {0 : "beginner",
                     1 : "intermediate",
@@ -160,8 +170,37 @@ def apply_filters(request, search_text=None):
         "current":'explore',
         "search_text": search_text
     }
+    
+    #input([length_filters,language_filters,difficulty_filters])
+    for filter_ in length_filters:
+        context[filter_] = True
+        
+    for filter_ in language_filters:
+        context[filter_] = True
+            
+    for filter_ in difficulty_filters:
+        context[filter_] = True    
+        
+    #input(context)
+    
     return render(request, "lesson_explore.html", context)
 
+def clear_filters(request, search_text=None):
+    
+    if search_text != None:
+        Lessons = search_lessons(search_text)
+    else:
+        Lessons = Lesson.objects.all().order_by('-created_on')   
+        
+    context = {
+        "Lessons": Lessons,
+        "current":'explore',
+        "search_text": search_text
+    }    
+    
+    return render(request, "lesson_explore.html", context)
+
+# Create lesson page
 @login_required
 def lesson_new(request):
 
@@ -178,7 +217,7 @@ def lesson_new(request):
     }
     return render(request, "lesson_new.html", context)
 
-
+# Update lesson page
 @login_required
 def lesson_edit(request, pk):
     lesson = Lesson.objects.get(pk=pk)
@@ -199,7 +238,7 @@ def lesson_edit(request, pk):
         }
         return render(request, "lesson_edit.html", context)
 
-
+# Delete lesson page
 @login_required
 def lesson_delete(request, pk):
     lesson = Lesson.objects.get(pk=pk)
@@ -211,6 +250,7 @@ def lesson_delete(request, pk):
 
     return redirect('lesson_index')
 
+# Create curriculum page
 @login_required()
 def curriculum_new(request):
 
@@ -227,18 +267,18 @@ def curriculum_new(request):
     }
     return render(request, "curriculum_new.html", context)
 
+# Read curriculum page
 def curriculum_detail(request, pk):
     curriculum = Curriculum.objects.get(pk=pk)
-    # comments = Comment.objects.filter(lesson=lesson)
     context = {
         "curriculum": curriculum,
-        # "comments": comments,
         "current":'detail',
 
     }
     return render(request, "curriculum_detail.html", context)
 
-def get_queryset(self): # new
+# Query set
+def get_queryset(self): 
     query = self.request.GET.get('q')
     return Lesson.objects.filter(
         Q(title__icontains=query) | Q(description__icontains=query)
