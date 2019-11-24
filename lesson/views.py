@@ -93,7 +93,7 @@ def lesson_tag(request, tag):
     context = {
         "tag": tag,
         "lessons": lessons,
-        "current":'tag',
+        "current": 'tag',
     }
     current = 'tag'
     return render(request, "lesson_tag.html", context)

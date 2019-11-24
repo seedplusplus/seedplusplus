@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load ratings %}
 
 {% block page_title %}
 {{ lesson.title | slice:":40" }}
@@ -48,6 +49,8 @@
 							</div>
 							{% endfor %}
 						</div>
+                        <p>{% ratings lesson %}</p>
+
 						
 						<p>{{ lesson.body}}</p>
 						

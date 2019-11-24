@@ -4,6 +4,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelatio
 from django.contrib.contenttypes.models import ContentType
 from django.views.generic import TemplateView, ListView
 from taggit.managers import TaggableManager
+from star_ratings.models import Rating
+
 
 class UserCreatedObject(models.Model):
     class Meta:
@@ -26,15 +28,15 @@ class Comment(UserCreatedObject):
     object_id=models.PositiveIntegerField()
     content_object = GenericForeignKey()
 
-class Rating(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    obj = GenericForeignKey('content_type', 'object_id')
-    created_on = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    score = models.PositiveSmallIntegerField(default=0)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id=models.PositiveIntegerField()
-    content_object = GenericForeignKey()
+# class Rating(models.Model):
+#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+#     obj = GenericForeignKey('content_type', 'object_id')
+#     created_on = models.DateTimeField(auto_now_add=True)
+#     last_modified = models.DateTimeField(auto_now=True)
+#     score = models.PositiveSmallIntegerField(default=0)
+#     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     object_id=models.PositiveIntegerField()
+#     content_object = GenericForeignKey()
 
 class CommentableObject(UserCreatedObject):
     class Meta:

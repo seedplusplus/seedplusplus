@@ -40,6 +40,7 @@
 									<a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
 								</h2>
 								<div id="mid_lesson">
+
 									{% for tag in lesson.tags.all|slice:":3" %}
 									<span id="language-header">
 										<a href="{% url 'lesson_tag' tag.name %}" style="color:white">

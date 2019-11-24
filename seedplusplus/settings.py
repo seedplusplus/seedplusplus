@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # third party apps
     'taggit',
     'guardian',
+    'star_ratings',
     # our apps
     'lesson',
     'registration',
