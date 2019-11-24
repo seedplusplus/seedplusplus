@@ -278,8 +278,17 @@ END BACKGROUND FORMATTING
 }
 
 #left-col-explore{
-	margin-left:30px;
+	margin-left: 30px;
 	border-radius: 20px;
+}
+
+#mid-filters {
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 20px;
+	width: 100%;
+	min-width: 320px;
+
 }
 
 #explore_header{
