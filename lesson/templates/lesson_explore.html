@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block page_title %}Home{% endblock %}
-{{ search_text }}
+
 {% block page_content %}
 <div class ="row form-group" style="margin-right: 0;">
     <div class = "col-md-12" id="explore_header">
@@ -87,7 +87,7 @@
                         
                     </form>
                     {% if search_text %}
-                        <form action="{% url 'lesson_search' search_text     %}" method="get">
+                        <form action="{% url 'lesson_search' search_text %}" method="get">
                     {% else %}
                         <form action="{% url 'lesson_explore'  %}" method="get">
                     {% endif %}

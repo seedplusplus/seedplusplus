@@ -123,10 +123,8 @@ def search_lessons(search_text):
 
 # Lesson search
 def lesson_search(request,search_text=None):
-    #input(search_text)
     if search_text == None:
-        search_text = request.GET.get('home_search')            
-        return apply_filters(request,search_text)
+        search_text = request.GET.get('home_search')
     
     results = search_lessons(search_text)
     
