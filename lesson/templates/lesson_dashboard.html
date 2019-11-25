@@ -7,28 +7,27 @@
 <div class= "row" id="home-background2">
 	<!-- Profile Pic GOES HERE --> 
 	
-	<div class="col-md-2">
+	<div class="col-md-2 profile-column">
 		<div class="profpic">
 			{% if user.userprofile.profile_pic %}
-				<img src="{{ user.userprofile.profile_pic }}">
+				<img onmouseover="myFunction2()" src="{{ user.userprofile.profile_pic }}">
 			{% else %}
-				<img src="{% static "sigfried.png"%}" alt="Sigfried Goes Here" style="padding:0; max-height:190px">
+				<img onmouseover="myFunction2()" src="{% static "sigfried.png"%}" alt="Sigfried Goes Here" style="padding:0; max-height:190px">
 			{% endif %}
 		</div>
-		<div class="upload-pic" style="margin-left:45px">
+		<div class="upload-pic">
 			<form action="{% url 'upload_prof_pic' %}" method="GET">
-				<button style="margin-bottom:5px"type="submit">Upload New Picture</button>
+				<button style="margin-left:15px;margin-bottom:5px"type="submit">Edit Profile Picture</button>
 			</form>
 		</div>
 		<div class= "card about-profile top-buffer-less">
 			<h2>{{user.get_username}}</h2>
-			<p>This is where a user's bio will be displayed. 
-			<br>This may include but is not limited to: information about their experience in computer science, the number of contributions to Seed++ that they have made, fun facts, etc.
+			<p>This is where a user's bio will be displayed. This may include but is not limited to: information about their experience in computer science, the number of contributions to Seed++ that they have made, fun facts, etc.
 			</p>
 		</div>
 	</div>
-	<div class="col-md-10 top-buffer-less" >
-		<div class="dashboard_back" style="margin:10px">
+	<div class="col-md-10 top-buffer-less">
+		<div class="dashboard_back" style="margin:10px;margin-left:10px">
 			<h1 class="top-buffer-less" id="lesson_title" style="padding-top:10px; padding-left:10px; padding-right:10px">My Lessons <a href="{% url 'lesson_new' %}">+</a></h1>
 			<div class="prof-lessons" style="padding-left:15px">
 				<div class="row">
@@ -55,7 +54,7 @@
 				</div>
 			</div>
 		</div>
-	<div class="dashboard_back" style="margin:10px">
+	<div class="dashboard_back" style="margin:10px;margin-left:10px">
 		<h1 class="top-buffer-less" id="lesson_title" style="padding-top:10px; padding-left:10px; padding-right:10px">My Curricula <a href="{% url 'curriculum_new' %}">+</a></h1>
 		<div class="prof-lessons" style="padding-left:15px">
 			<div class="row">
