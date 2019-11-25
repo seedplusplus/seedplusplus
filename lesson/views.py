@@ -9,6 +9,7 @@ from .forms import *
 from .functions import form_validate_and_save, has_perm, set_perm
 from .models import Lesson,Curriculum,UserProfile
 import logging
+from itertools import chain
 
 logger = logging.getLogger(__name__)
 
@@ -23,9 +24,13 @@ def lesson_index(request):
 
 # Explore lesson page
 def lesson_explore(request):
+    
     Lessons = Lesson.objects.all().order_by('-created_on')
+    Curricula = Curriculum.objects.all().order_by('-created_on')
+    
+    results = list(chain(Lessons,Curricula))
     context = {
-        "Lessons": Lessons,
+        "Lessons": results,
         "current": 'explore',
     }
     current = 'explore'
@@ -278,6 +283,39 @@ def curriculum_detail(request, pk):
 
     }
     return render(request, "curriculum_detail.html", context)
+
+# Update curriculum page
+@login_required
+def curriculum_edit(request, pk):
+    curriculum = Curriculum.objects.get(pk=pk)
+    if not has_perm(request.user, curriculum, 'curriculum.change_curriculum'):
+        return redirect('/login/?next=%s' % request.path)
+    if request.method == "POST":
+        form = CurriculumForm(request.POST, instance=curriculum)
+        curriculum = form_validate_and_save(form, request, edit=True)
+
+        if curriculum:
+            return redirect('curriculum_detail', pk=curriculum.pk)
+        else:
+            logger.error("curriculum_edit form invalid: {}".format(form.errors))
+    else:
+        context = {
+            "pk": pk,
+            "form": CurriculumForm(instance=curriculum)
+        }
+        return render(request, "curriculum_edit.html", context)
+
+# Delete curriculum page
+@login_required
+def curriculum_delete(request, pk):
+    curriculum = Curriculum.objects.get(pk=pk)
+
+    if not has_perm(request.user, curriculum, 'curriculum.delete_curriculum'):
+        return redirect('/login/?next=%s' % request.path)
+
+    curriculum.delete()
+
+    return redirect('lesson_index')
 
 # Query set
 def get_queryset(self): 

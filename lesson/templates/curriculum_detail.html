@@ -82,6 +82,12 @@
 					</p>
 				</div>
 			</div>
+			{% if user.is_authenticated and curriculum.owner.get_username == user.get_username %}
+			<div id="lesson_title" style="border-bottom:none!important;">
+				<a href="{% url 'curriculum_delete' curriculum.pk%}"> Delete </a> &nbsp;&nbsp;
+				<a href="{% url 'curriculum_edit' curriculum.pk%}"> Edit</a>
+			</div>
+			{% endif %}
 	</div>
 </div>
 {% endblock %}
