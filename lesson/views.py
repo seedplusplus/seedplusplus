@@ -93,7 +93,7 @@ def lesson_tag(request, tag):
     context = {
         "tag": tag,
         "lessons": lessons,
-        "current":'tag',
+        "current": 'tag',
     }
     current = 'tag'
     return render(request, "lesson_tag.html", context)
@@ -118,8 +118,10 @@ def search_lessons(search_text):
 
 # Lesson search
 def lesson_search(request,search_text=None):
+    #input(search_text)
     if search_text == None:
-        search_text = request.GET.get('home_search')
+        search_text = request.GET.get('home_search')            
+        return apply_filters(request,search_text)
     
     results = search_lessons(search_text)
     
