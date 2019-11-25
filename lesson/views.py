@@ -165,15 +165,15 @@ def apply_filters(request, search_text=None):
     language_filters = request.GET.getlist('language')
     difficulty_filters = request.GET.getlist('difficulty')
     
-    print(language_filters)
+    #print(language_filters)
     
     length_map = {0 : "less_than_1",
                     1 : "1_hour",
                     2 : "2_hour"}
     
-    language_filters = {"python" : "Python",
-                        "java" : "Java",
-                        "cplusplus" : "C++"}
+    language_map = {"Python" : "python",
+                        "Java" : "java",
+                        "C++" : "cplusplus"}
     
     difficulty_map = {0 : "beginner",
                     1 : "intermediate",
@@ -188,15 +188,16 @@ def apply_filters(request, search_text=None):
     
     # Filter language
     if len(language_filters) != 0:
-        for x in Lessons:
-            print(x.language)        
+        #for x in Lessons:
+            #print(x.language)        
         Lessons = [x for x in Lessons if x.language.capitalize() in language_filters]
     
     # Filter difficulty
     if len(difficulty_filters) != 0:
         Lessons = [x for x in Lessons if difficulty_map[x.difficulty] in difficulty_filters]
-        
-    input()
+    
+    #print("Lessons:",Lessons)
+    #input(language_filters)
     
     context = {
         "Lessons": Lessons,
@@ -209,7 +210,7 @@ def apply_filters(request, search_text=None):
         context[filter_] = True
         
     for filter_ in language_filters:
-        context[filter_] = True
+        context[language_map[filter_]] = True
             
     for filter_ in difficulty_filters:
         context[filter_] = True    

@@ -758,9 +758,9 @@ ADVANCED SEARCH
 */
 
 .advanced-search-style{
-	background:linear-gradient(#F6EDF7 0%,transparent 30%);
+	/*background:linear-gradient(#F6EDF7 0%,transparent 30%);
 	border-top-style: solid;
-	border-top-color: #40383D;
+	border-top-color: #40383D;*/
 	margin:auto;
 }
 .advanced-search-style h1{
@@ -776,7 +776,7 @@ ADVANCED SEARCH
 
 .dropbutton{
 	background-color: #362630;
-	border-radius:10px 10px 0 0;
+	border-radius:10px;
 	color: #F6EDF7;
 	padding: 2px 5px 2px 5px;
 	font-size: 16px;
@@ -792,9 +792,21 @@ ADVANCED SEARCH
 
 .content-advanced{
   display: none;
+  background:none;
+  border-top-style: none;
+  border-top-color: transparent;
   text-align:left;
 }
 
+.content-show{
+	background:linear-gradient(#F6EDF7 0%,transparent 30%);
+	border-top-style: solid;
+	border-top-color: #40383D;
+}
+
+.button-edit{
+	border-radius:10px 10px 0 0;
+}
 
 /*
 END ADVANCED SEARCH -------------------------------------------

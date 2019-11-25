@@ -55,6 +55,7 @@
 							<input type="checkbox" name="language" value="python"> Python &nbsp;
 						{% endif %}
 
+<<<<<<< HEAD
 						{% if cplusplus %}
 							<input type="checkbox" name="language" value="cplusplus" checked> C++ &nbsp;
 						{% else %}
@@ -79,6 +80,33 @@
 						{% else %}
 							<input type="checkbox" name="difficulty" value="intermediate"> Intermediate&nbsp;
 						{% endif %}
+=======
+	                                <li id="language">Language</li>
+	                                {% if python %}
+	                                    <input type="checkbox" name="language" value="Python" checked> Python<br>
+	                                {% else %}
+	                                    <input type="checkbox" name="language" value="Python"> Python<br>
+	                                {% endif %}
+
+	                                {% if cplusplus %}
+	                                    <input type="checkbox" name="language" value="C++" checked> C++<br>
+	                                {% else %}
+	                                    <input type="checkbox" name="language" value="C++"> C++<br>
+	                                {% endif %}
+
+	                                {% if java %}
+	                                    <input type="checkbox" name="language" value="Java" checked> Java<br>
+	                                {% else %}
+	                                    <input type="checkbox" name="language" value="Java"> Java<br>
+	                                {% endif %}
+	                                
+	                                <li id="difficulty">Difficulty</li>
+	                                {% if beginner %}
+	                                    <input type="checkbox" name="difficulty" value="beginner" checked> Beginner<br>
+	                                {% else %}
+	                                    <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
+	                                {% endif %}
+>>>>>>> 12310885e1173a7b76ad68f06bcac9a7efe52962
 
 						{% if advanced %}
 							<input type="checkbox" name="difficulty" value="advanced" checked> Advanced&nbsp;
