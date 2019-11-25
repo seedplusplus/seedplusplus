@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load ratings %}
+{% load comments %}
 
 {% block page_title %}
 {{ lesson.title | slice:":40" }}
@@ -55,15 +56,52 @@
 						<p>{{ lesson.body}}</p>
 						
 						<h2 id="lesson_title">Leave a Comment: </h2>
-						<form>
+						<!-- <form>
 							<textarea class="top-buffer-quarter bot-buffer-quarter" placeholder="Type Here..." id="comment-box"></textarea>
 							<input type="submit" name="submit_comment" value="Submit" id="comment_submit">
-						</form>
+						</form> -->
+
+						<!-- {% get_comment_form for lesson as form %}
+						<table>
+							<form action="{% comment_form_target %}" method="post">
+								{% csrf_token %}
+							    {{ form }}
+							    <tr>
+							      <td colspan="2">
+							        <input type="submit" name="submit" value="Post">
+							      </td>
+							    </tr>
+							   	<input type="hidden" name="next" value="{% url 'lesson_detail' lesson.pk %}" />
+							</form>
+						</table> -->
+
+						{% if user.is_authenticated %}
+						    {% get_comment_form for lesson as form %}
+						    <form action="{% comment_form_target %}" method="POST">
+						    {% csrf_token %}
+						    {{ form.comment }}
+						    {{ form.content_type }}
+						    {{ form.object_pk }}
+						    {{ form.timestamp }}
+						    {{ form.security_hash }}
+						    <input type="hidden" name="next" value="{% url 'lesson_detail' lesson.pk %}" />
+						    <input type="submit" value="Add comment" id="id_submit" />
+						    </form>
+						{% else %}
+						    <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
+						{% endif %}
 
 						<h2 id="lesson_title">Comments: </h2>
-			<p>
-				This is where comments would go... if we had any!
-			</p>
+						<p>
+							{% render_comment_list for lesson %}
+							<!-- {% get_comment_list for lesson as comment %}
+							{{ comment_list }}
+							{% for comment in comment_list %}
+								{{ comment.submit_date }}
+							    {{ comment.user_name }}
+							    {{ comment.comment }}
+							{% endfor %} -->
+						</p>
 			{% if user.is_authenticated and lesson.owner.get_username == user.get_username %}
 			<div id="lesson_title" style="border-bottom:none!important;">
 				<a href="{% url 'lesson_delete' lesson.pk%}"> Delete </a> &nbsp;&nbsp;

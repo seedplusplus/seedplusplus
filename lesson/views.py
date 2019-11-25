@@ -25,10 +25,10 @@ def lesson_index(request):
 # Explore lesson page
 def lesson_explore(request):
     
-    Lessons = Lesson.objects.all().order_by('-created_on')
-    Curricula = Curriculum.objects.all().order_by('-created_on')
+    Lessons = Lesson.objects.all()
+    Curricula = Curriculum.objects.all()
     
-    results = list(chain(Lessons,Curricula))
+    results = list(sorted(chain(Lessons,Curricula),key=lambda lesson: lesson.created_on))
     context = {
         "Lessons": results,
         "current": 'explore',
