@@ -110,10 +110,17 @@
         <div class="card form-group" id="lesson_card">
         <div id="card-margin">
             <h2 id="lesson_title">
-                <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
-                <div id='date-text'>
-				{{ lesson.created_on.date }} &nbsp;
-                </div>
+                {% if lesson.lessons %}
+                    <a href="{% url 'curriculum_detail' lesson.pk%}">{{ lesson.title }}</a>
+                    <div id='date-text'>
+                    {{ lesson.created_on.date }} &nbsp;
+                    </div>
+                {% else %}
+                    <a href="{% url 'lesson_detail' lesson.pk%}">{{ lesson.title }}</a>
+                    <div id='date-text'>
+    				{{ lesson.created_on.date }} &nbsp;
+                    </div>
+                {% endif %}
             </h2>
 			<!--
             <div id="mid_lesson">
