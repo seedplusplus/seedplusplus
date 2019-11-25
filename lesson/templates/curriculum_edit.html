@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Edit Curriculum
+{% endblock %}
+
+{% block page_content %}
+<div class="col-md-3 login-format">
+    <h1>Edit Curriculum</h1>
+    <hr>
+    <form action="{% url 'curriculum_edit' pk %}" method="post" >
+        {% csrf_token %}
+        {% include "curriculum_edit_form_template.html" %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>
+{% endblock %}

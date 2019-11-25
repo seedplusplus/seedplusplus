@@ -1,8 +1,9 @@
 from django.contrib import admin 
-from django.urls import path 
+from django.urls import path, re_path
 from django.conf import settings 
 from django.conf.urls.static import static 
 from . import views
+from django.conf.urls import include
 
 urlpatterns = [
     path("lessons/explore/", views.lesson_explore, name="lesson_explore"),
@@ -19,11 +20,14 @@ urlpatterns = [
     path("lessons/faq/", views.lesson_faq, name="lesson_faq"),
     path("curriculum/new/", views.curriculum_new, name="curriculum_new"),
     path("curriculum/<int:pk>/", views.curriculum_detail, name="curriculum_detail"),
+    path("curriculum/<int:pk>/edit/", views.curriculum_edit, name="curriculum_edit"),    
+    path("curriculum/<int:pk>/delete",views.curriculum_delete,name="curriculum_delete"),    
     path("dashboard",views.lesson_dashboard, name="lesson_dashboard"),
     path("lessons/explore/filters/<search_text>",views.apply_filters, name="apply_filters"),
     path("lessons/explore/filters/",views.apply_filters, name="apply_filters"),
     path("dashboard/upload_prof_pic/",views.upload_prof_pic, name="upload_prof_pic"),
     path("dashboard/image_upload/<username>", views.prof_pic_view, name="image_upload"), 
+    re_path(r'^comments/', include('django_comments.urls')),
    ]
 
 if settings.DEBUG:

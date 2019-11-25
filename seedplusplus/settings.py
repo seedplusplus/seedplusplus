@@ -27,6 +27,7 @@ DEBUG = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 AUTH_PROFILE_MODULE = 'lesson.UserProfile'
+COMMENTS_APP = 'lesson'
 
 ALLOWED_HOSTS = [
     'mcmant.pythonanywhere.com',
@@ -45,13 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'django_comments',
+    'django.contrib.sites',
     # third party apps
     'taggit',
     'guardian',
+    'star_ratings',
     # our apps
     'lesson',
     'registration',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from lesson.models import Lesson, Comment, Curriculum
+from lesson.models import Lesson, Curriculum
 
 class LessonAdmin(admin.ModelAdmin):
     pass
@@ -12,6 +12,6 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Lesson, LessonAdmin)
-admin.site.register(Comment, CommentAdmin)
+#admin.site.register(CustomComment, CommentAdmin)
 admin.site.register(Curriculum, CurriculumAdmin)
 

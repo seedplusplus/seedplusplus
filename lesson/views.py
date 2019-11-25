@@ -9,6 +9,7 @@ from .forms import *
 from .functions import form_validate_and_save, has_perm, set_perm
 from .models import Lesson,Curriculum,UserProfile
 import logging
+from itertools import chain
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,11 @@ def lesson_index(request):
 
 # Explore lesson page
 def lesson_explore(request):
+    
     Lessons = Lesson.objects.all().order_by('-created_on')
+    #Curricula = Curriculum.objects.all()
+    
+    #results = list(sorted(chain(Lessons,Curricula),key=lambda lesson: lesson.created_on))
     context = {
         "Lessons": Lessons,
         "current": 'explore',
@@ -93,7 +98,7 @@ def lesson_tag(request, tag):
     context = {
         "tag": tag,
         "lessons": lessons,
-        "current":'tag',
+        "current": 'tag',
     }
     current = 'tag'
     return render(request, "lesson_tag.html", context)
@@ -118,8 +123,10 @@ def search_lessons(search_text):
 
 # Lesson search
 def lesson_search(request,search_text=None):
-    if search_text == None:
-        search_text = request.GET.get('home_search')
+    #input(search_text)
+    if search_text == None or search_text == "":
+        search_text = request.GET.get('home_search')            
+        return apply_filters(request,search_text)
     
     results = search_lessons(search_text)
     
@@ -135,15 +142,16 @@ def lesson_search(request,search_text=None):
 
 # Filters (may become advanced search)
 def apply_filters(request, search_text=None):
-    
-    if search_text != None:
-        Lessons = search_lessons(search_text)
+    if search_text == None or search_text == "":
+        Lessons = Lesson.objects.all().order_by('-created_on')  
     else:
-        Lessons = Lesson.objects.all().order_by('-created_on')    
+        Lessons = search_lessons(search_text)
     
     length_filters = request.GET.getlist('length')
     language_filters = request.GET.getlist('language')
     difficulty_filters = request.GET.getlist('difficulty')
+    
+    #print(difficulty_filters)
     
     length_map = {0 : "less_than_1",
                     1 : "1_hour",
@@ -151,7 +159,10 @@ def apply_filters(request, search_text=None):
     
     difficulty_map = {0 : "beginner",
                     1 : "intermediate",
-                    2 : "advanced"}
+                    2 : "advanced",
+                    3 : "hyper-difficult",
+                    4 : "hell mode",
+                    5 : "absolut nightmare"}
         
     # Filter duration    
     if len(length_filters) != 0:
@@ -163,7 +174,11 @@ def apply_filters(request, search_text=None):
     
     # Filter difficulty
     if len(difficulty_filters) != 0:
-        Lessons = [x for x in Lessons if x.difficulty in difficulty_filters]
+        for x in Lessons:
+            print(x.difficulty)
+        Lessons = [x for x in Lessons if difficulty_map[x.difficulty] in difficulty_filters]
+        
+    #input()
     
     context = {
         "Lessons": Lessons,
@@ -276,6 +291,39 @@ def curriculum_detail(request, pk):
 
     }
     return render(request, "curriculum_detail.html", context)
+
+# Update curriculum page
+@login_required
+def curriculum_edit(request, pk):
+    curriculum = Curriculum.objects.get(pk=pk)
+    if not has_perm(request.user, curriculum, 'curriculum.change_curriculum'):
+        return redirect('/login/?next=%s' % request.path)
+    if request.method == "POST":
+        form = CurriculumForm(request.POST, instance=curriculum)
+        curriculum = form_validate_and_save(form, request, edit=True)
+
+        if curriculum:
+            return redirect('curriculum_detail', pk=curriculum.pk)
+        else:
+            logger.error("curriculum_edit form invalid: {}".format(form.errors))
+    else:
+        context = {
+            "pk": pk,
+            "form": CurriculumForm(instance=curriculum)
+        }
+        return render(request, "curriculum_edit.html", context)
+
+# Delete curriculum page
+@login_required
+def curriculum_delete(request, pk):
+    curriculum = Curriculum.objects.get(pk=pk)
+
+    if not has_perm(request.user, curriculum, 'curriculum.delete_curriculum'):
+        return redirect('/login/?next=%s' % request.path)
+
+    curriculum.delete()
+
+    return redirect('lesson_index')
 
 # Query set
 def get_queryset(self): 
