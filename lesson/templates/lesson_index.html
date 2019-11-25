@@ -1,90 +1,95 @@
 {% extends "base.html" %}
+{% load static %}
 {% block page_title %}Home{% endblock %}
 
 {% block page_content %}
+
 <div id="home-background">
-	<div class="col-md-8 offset-md-2" id="home_text" style="margin-top:135px; margin-bottom:70px;"> 
+	<div class="col-md-8 offset-md-2" id="home_text" style="margin-top:135px; margin-bottom:30px;"> 
 		<div id = "header_fade">
 			Search Seed++
 		</div>
 	</div>
-	<div class="col-md-8 offset-md-2 top-buffer-less" style="text-align: center; height:90%;">
-	  <form action="{% url 'lesson_search' %}" method="get">
-		<div class="col make-it-fast">
-		  <input placeholder="Search for Lessons" type="text" name="home_search" id="home_search">
+	<form action="{% url 'lesson_search' %}" method="get">
+		<div class="col-md-8 offset-md-2 top-buffer-less" style="text-align: center; height:90%;margin-bottom:30px;">
+			<div class="col make-it-fast">
+			  <input placeholder="Search for Lessons" type="text" name="home_search" id="home_search">
+			</div>
+			<div class="col-md-2 offset-md-5 top-buffer-less submit-button">
+			  <input type="submit" id="home_submit" value="Go">
+			</div>
 		</div>
-		<div class="col-md-2 offset-md-5 top-buffer-less submit-button">
-		  <input type="submit" id="home_submit" value="Go">
+		<br>
+		<div class="col-md-6 offset-md-3">
+			<button id="dropped" type="button" onclick="expandAdvanced()" class="dropbutton">Show Advanced</button>
 		</div>
-		<div id = "mid-filters" class = "col-md-2">
-			<div class="card" id="filter">
-				<div class="card-header" id="filter-header">Filters</div>
-	                        <div class="card-body">
-	                            <ul style="list-style-type:none">
-	                                <li id="length">Length</li>
-	                                {% if less_than_1 %}
-	                                    <input type="checkbox" name="length" value="less_than_1" checked> Less than 1 hour<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="length" value="less_than_1"> Less than 1 hour<br>
-	                                {% endif %}
+		<div class = "col-md-6 offset-md-3 advanced-search-style">
+			<div class="dropdown-advanced">
+				<div id="dropdown-advanced-id" class="content-advanced">
+					<h1>&nbsp;&nbsp;Advanced</h1>
+					<ul style="list-style-type:none;">
+						<li id="length" style="display:inline-block;">Length</li>
+						{% if less_than_1 %}
+							<input type="checkbox" name="length" value="less_than_1" checked> &lt; 1 hour&nbsp;
+						{% else %}
+							<input type="checkbox" name="length" value="less_than_1"> &lt; 1 hour&nbsp;
+						{% endif %}
+						
+						{% if 1_hour %}
+							<input type="checkbox" name="length" value="1_hour" checked> 1 hour&nbsp;
+						{% else %}
+							<input type="checkbox" name="length" value="1_hour"> 1 hour&nbsp;
+						{% endif %}
 
-	                                {% if 1_hour %}
-	                                    <input type="checkbox" name="length" value="1_hour" checked> 1 hour<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="length" value="1_hour"> 1 hour<br>
-	                                {% endif %}
+						{% if 2_hour %}
+							<input type="checkbox" name="length" value="2_hour" checked> 2 hours&nbsp;
+						{% else %}
+							<input type="checkbox" name="length" value="2_hour"> 2 hours&nbsp;
+						{% endif %}
+						<br>
+						
+						<li id="language" style="display:inline-block">Language</li>
+						{% if python %}
+							<input type="checkbox" name="language" value="Python" checked> Python &nbsp;
+						{% else %}
+							<input type="checkbox" name="language" value="Python"> Python &nbsp;
+						{% endif %}
 
-	                                {% if 2_hour %}
-	                                    <input type="checkbox" name="length" value="2_hour" checked> 2 hours<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="length" value="2_hour"> 2 hours<br>
-	                                {% endif %}
+						{% if cplusplus %}
+							<input type="checkbox" name="language" value="C++" checked> C++ &nbsp;
+						{% else %}
+							<input type="checkbox" name="language" value="C++"> C++ &nbsp;
+						{% endif %}
 
-	                                <li id="language">Language</li>
-	                                {% if python %}
-	                                    <input type="checkbox" name="language" value="python" checked> Python<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="python"> Python<br>
-	                                {% endif %}
+						{% if java %}
+							<input type="checkbox" name="language" value="Java" checked> Java &nbsp;
+						{% else %}
+							<input type="checkbox" name="language" value="Java"> Java&nbsp;
+						{% endif %}
+						<br>
+						<li id="difficulty" style="display:inline-block">Difficulty</li>
+						{% if beginner %}
+							<input type="checkbox" name="difficulty" value="beginner" checked> Beginner&nbsp;
+						{% else %}
+							<input type="checkbox" name="difficulty" value="beginner"> Beginner&nbsp;
+						{% endif %}
 
-	                                {% if cplusplus %}
-	                                    <input type="checkbox" name="language" value="cplusplus" checked> C++<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="cplusplus"> C++<br>
-	                                {% endif %}
+						{% if intermediate %}
+							<input type="checkbox" name="difficulty" value="intermediate" checked> Intermediate&nbsp;
+						{% else %}
+							<input type="checkbox" name="difficulty" value="intermediate"> Intermediate&nbsp;
+						{% endif %}
 
-	                                {% if java %}
-	                                    <input type="checkbox" name="language" value="java" checked> Java<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="java"> Java<br>
-	                                {% endif %}
-	                                
-	                                <li id="difficulty">Difficulty</li>
-	                                {% if beginner %}
-	                                    <input type="checkbox" name="difficulty" value="beginner" checked> Beginner<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
-	                                {% endif %}
-
-	                                {% if intermediate %}
-	                                    <input type="checkbox" name="difficulty" value="intermediate" checked> Intermediate<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="difficulty" value="intermediate"> Intermediate<br>
-	                                {% endif %}
-
-	                                {% if advanced %}
-	                                    <input type="checkbox" name="difficulty" value="advanced" checked> Advanced<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="difficulty" value="advanced"> Advanced<br>
-	                                {% endif %}
-	                                
-	                            </ul>
-	                        </div> 
-	                        
-	                   
+						{% if advanced %}
+							<input type="checkbox" name="difficulty" value="advanced" checked> Advanced&nbsp;
+						{% else %}
+							<input type="checkbox" name="difficulty" value="advanced"> Advanced&nbsp;
+						{% endif %}
+						
+					</ul>
 				</div>
 			</div>
-</div>
+		</div>
 	  </form>
 	</div>
 </div>

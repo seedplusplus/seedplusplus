@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block page_title %}Home{% endblock %}
-{{ search_text }}
+
 {% block page_content %}
 <div class ="row form-group" style="margin-right: 0;">
     <div class = "col-md-12" id="explore_header">
@@ -43,21 +43,21 @@
 
                                 <li id="language">Language</li>
                                 {% if python %}
-                                    <input type="checkbox" name="language" value="python" checked> Python<br>
+                                    <input type="checkbox" name="language" value="Python" checked> Python<br>
                                 {% else %}
-                                    <input type="checkbox" name="language" value="python"> Python<br>
+                                    <input type="checkbox" name="language" value="Python"> Python<br>
                                 {% endif %}
 
                                 {% if cplusplus %}
-                                    <input type="checkbox" name="language" value="cplusplus" checked> C++<br>
+                                    <input type="checkbox" name="language" value="C++" checked> C++<br>
                                 {% else %}
-                                    <input type="checkbox" name="language" value="cplusplus"> C++<br>
+                                    <input type="checkbox" name="language" value="C++"> C++<br>
                                 {% endif %}
 
                                 {% if java %}
-                                    <input type="checkbox" name="language" value="java" checked> Java<br>
+                                    <input type="checkbox" name="language" value="Java" checked> Java<br>
                                 {% else %}
-                                    <input type="checkbox" name="language" value="java"> Java<br>
+                                    <input type="checkbox" name="language" value="Java"> Java<br>
                                 {% endif %}
                                 
                                 <li id="difficulty">Difficulty</li>
@@ -87,7 +87,7 @@
                         
                     </form>
                     {% if search_text %}
-                        <form action="{% url 'lesson_search' search_text     %}" method="get">
+                        <form action="{% url 'lesson_search' search_text %}" method="get">
                     {% else %}
                         <form action="{% url 'lesson_explore'  %}" method="get">
                     {% endif %}

@@ -56,13 +56,27 @@ def lesson_faq(request):
 
 # User dashboard page
 @login_required
-def lesson_dashboard(request):
+def lesson_dashboard(request,pk=None):
+    upload = request.user.userprofile.profile_pic
+    if pk != None and request.method == 'POST' and request.FILES['profpic']:
+        profpic = request.FILES['profpic']
+        fs = FileSystemStorage()
+        filename = fs.save(profpic.name, profpic)
+        upload = fs.url(filename)
+        
+        current_user, created = UserProfile.objects.get_or_create(user=request.user)
+        current_user.profile_pic = upload
+        current_user.save()
+        #return render(request, 'lesson_dashboard.html', {'profile_pic': upload})
+        
+    #return render(request, 'lesson_dashboard.html', {'profile_pic': None})    
     Lessons = Lesson.objects.all().order_by('-created_on')
     Curricula = Curriculum.objects.all().order_by('-created_on')
     context = {
         "Lessons": Lessons,
         "Curricula": Curricula,
         "current": 'dashboard',
+        'profile_pic': upload
     }
     return render(request, "lesson_dashboard.html", context)
 
@@ -73,20 +87,20 @@ def upload_prof_pic(request):
     return render(request, "upload_prof_pic.html", context)
 
 # View for uploading picture for profile
-@login_required
-def prof_pic_view(request,username):
-    if request.method == 'POST' and request.FILES['profpic']:
-        profpic = request.FILES['profpic']
-        fs = FileSystemStorage()
-        filename = fs.save(profpic.name, profpic)
-        upload = fs.url(filename)
+#@login_required
+#def prof_pic_view(request,username):
+    #if request.method == 'POST' and request.FILES['profpic']:
+        #profpic = request.FILES['profpic']
+        #fs = FileSystemStorage()
+        #filename = fs.save(profpic.name, profpic)
+        #upload = fs.url(filename)
         
-        current_user, created = UserProfile.objects.get_or_create(user=request.user)
-        current_user.profile_pic = upload
-        current_user.save()
-        return render(request, 'lesson_dashboard.html', {'profile_pic': upload})
+        #current_user, created = UserProfile.objects.get_or_create(user=request.user)
+        #current_user.profile_pic = upload
+        #current_user.save()
+        #return render(request, 'lesson_dashboard.html', {'profile_pic': upload})
         
-    return render(request, 'lesson_dashboard.html', {'profile_pic': None})
+    #return render(request, 'lesson_dashboard.html', {'profile_pic': None})
 
 # Lesson tag page
 def lesson_tag(request, tag):
@@ -151,11 +165,15 @@ def apply_filters(request, search_text=None):
     language_filters = request.GET.getlist('language')
     difficulty_filters = request.GET.getlist('difficulty')
     
-    #print(difficulty_filters)
+    #print(language_filters)
     
     length_map = {0 : "less_than_1",
                     1 : "1_hour",
                     2 : "2_hour"}
+    
+    language_map = {"Python" : "python",
+                        "Java" : "java",
+                        "C++" : "cplusplus"}
     
     difficulty_map = {0 : "beginner",
                     1 : "intermediate",
@@ -170,15 +188,16 @@ def apply_filters(request, search_text=None):
     
     # Filter language
     if len(language_filters) != 0:
-        Lessons = [x for x in Lessons if x.language in language_filters]
+        #for x in Lessons:
+            #print(x.language)        
+        Lessons = [x for x in Lessons if x.language.capitalize() in language_filters]
     
     # Filter difficulty
     if len(difficulty_filters) != 0:
-        for x in Lessons:
-            print(x.difficulty)
         Lessons = [x for x in Lessons if difficulty_map[x.difficulty] in difficulty_filters]
-        
-    #input()
+    
+    #print("Lessons:",Lessons)
+    #input(language_filters)
     
     context = {
         "Lessons": Lessons,
@@ -191,7 +210,7 @@ def apply_filters(request, search_text=None):
         context[filter_] = True
         
     for filter_ in language_filters:
-        context[filter_] = True
+        context[language_map[filter_]] = True
             
     for filter_ in difficulty_filters:
         context[filter_] = True    

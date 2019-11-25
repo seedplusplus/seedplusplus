@@ -20,3 +20,8 @@ var prevfaq = "";
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+function expandAdvanced() {
+  document.getElementById("dropdown-advanced-id").classList.toggle("show");
+  document.getElementById("dropdown-advanced-id").classList.toggle("content-show");
+  document.getElementById("dropped").classList.toggle("button-edit");
+}

@@ -13,7 +13,7 @@ body {
 PROFILE INFORMATION -------------------------------------------
 */
 
-.prof-lessons > .row{
+.prof-lessons > .row {
 	overflow-x: auto;
 	white-space: nowrap;
 	flex-wrap: nowrap;
@@ -29,19 +29,18 @@ PROFILE INFORMATION -------------------------------------------
   float: none;
 }
 
-.profpic{
+.profpic {
   width: 200px;
   height: 200px;
   position: relative;
   overflow: hidden;
-  border: 3px solid #40383D;
-  border-radius: 50%;
+  border-radius: 10px;
   background: green;
   margin: 15px;
   margin-left: 20px!important;
 }
 
-.profpic img{
+.profpic img {
   display: inline;
   margin: 0 auto;
   height: 100%;
@@ -49,18 +48,52 @@ PROFILE INFORMATION -------------------------------------------
   max-height:200px;
 }
 
-.about-profile{
-	background: #F6EDF7;
-	border-radius: 20px;
+
+.about-profile {
+	/*background: #F6EDF7;*/
+	background-color: #40383D;
+	border-radius: 10px;
+	border-style:none;
 	text-align:center;
-	padding:10px;
-	margin-left: 30px;
-	margin-right:20px;
+	margin: 5px;
+	margin-left: 20px!important;
+	color:#F6EDF7;
+	
 }
-.about-profile h2{
-	color:#362630;
+.about-profile h2 {
+	color:#F6EDF7;
 	font-size:1.2rem;
 	font-weight:600;
+	text-decoration:none;
+}
+
+.about-profile p {
+	text-align:left!important;
+	font-size:0.9rem;
+	font-style: italic;
+}
+
+.profile-column {
+	background-color: #40383D;
+	height:100vh;
+	
+}
+
+.upload-pic {
+	text-align:center;
+}
+.upload-pic button {
+	border-radius:10px;
+	background-color:#F6EDF7;
+	font-size:1rem;
+	text-decoration: none;
+	font-weight:600;
+	color:#362630;
+}
+.upload-pic button:hover {
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
 }
 
 .top-buffer { 
@@ -71,7 +104,7 @@ PROFILE INFORMATION -------------------------------------------
 	margin-top: 10px;
 }
 
-.submit-button{
+.submit-button {
 	width:75%;
 }
 
@@ -101,7 +134,7 @@ FAQ PAGE STUFF -------------------------------------------
 	font-size: 1.5rem;
 	text-align:center;
 	background-color: #F6EDF7;
-	border-radius: 20px;
+	border-radius: 10px;
 	padding-bottom: 2px;
 	
 }
@@ -147,6 +180,7 @@ BACKGROUND FORMATTING -------------------------------------------
 	box-shadow:0px 0px 600px white inset;
 	
 }
+
 #home-background4{
 	background-image: url("/static/cloud2.png");
 	background-position: center 110%;
@@ -315,7 +349,7 @@ END BACKGROUND FORMATTING
 }
 
 .card-header{
-	border-radius: 20px 20px 0 0 !important;
+	border-radius: 10px 10px 0 0 !important;
 	font-weight:600! important;
 	color: #F6EDF7 !important;
 	font-size: 1.2rem;
@@ -328,7 +362,7 @@ END BACKGROUND FORMATTING
 #filter{
 	background-color: #F6EDF7;
 	border-style:none;
-	border-radius: 20px 20px 20px 20px;
+	border-radius: 10px;
 	margin-left:0;
 }
 
@@ -347,7 +381,7 @@ LESSON CARD FORMATTING	-------------------------------------------
 #lesson_card{
 	background-color: #F6EDF7;
 	border-style:none;
-	border-radius: 20px 20px 20px 20px;
+	border-radius: 10px;
 }
 
 #lesson_card h2{
@@ -434,7 +468,7 @@ LESSON CARD FORMATTING	-------------------------------------------
 
 #sort-bar{
 	background-color:#40383D !important;
-	border-radius:20px !important;
+	border-radius:10px !important;
 	color: #F6EDF7;
 	border-style:none;
 	padding-top: 1px;
@@ -459,7 +493,7 @@ CURRICULUM CARD FORMATTING	-------------------------------------------
 	background-color:#40383D;
 	color:#F6EDF7;
 	border-style: none;
-	border-radius: 20px 20px 0 0;
+	border-radius: 10px 10px 0 0;
 }
 #curriculum_title p{
 	padding-bottom:0;
@@ -479,7 +513,7 @@ DASHBOARD FORMATTING STUFF -------------------------------------------
 	padding-right:15px;
 	padding-bottom:15px;
 	background-color: #40383D;
-	border-radius:20px;
+	border-radius:10px;
 	margin-bottom:10px;
 	
 }
@@ -615,7 +649,7 @@ DROPDOWN FORMATTING	-------------------------------------------
 }
 
 
-/* The container <div> - needed to position the dropdown content */
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -651,7 +685,7 @@ DROPDOWN FORMATTING	-------------------------------------------
 	}
 
 /* Show the dropdown menu */
-.show {display:block;}
+.show {display:block!important;}
 
 
 /*
@@ -713,9 +747,71 @@ LOGIN FORMATTING -------------------------------------------
 	text-align:left;
 }
 
+
+
 /* 
 END LOGIN FORMATTING -------------------------------------------
 */
+
+/*
+ADVANCED SEARCH
+*/
+
+.advanced-search-style{
+	/*background:linear-gradient(#F6EDF7 0%,transparent 30%);
+	border-top-style: solid;
+	border-top-color: #40383D;*/
+	margin:auto;
+}
+.advanced-search-style h1{
+	font-size:1.2rem;
+	font-weight:600;
+	
+}
+
+.dropdown-advanced{
+	position: relative;
+	display: inline-block;
+}
+
+.dropbutton{
+	background-color: #362630;
+	border-radius:10px;
+	color: #F6EDF7;
+	padding: 2px 5px 2px 5px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropbutton:hover, .dropbutton:focus{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+}
+
+.content-advanced{
+  display: none;
+  background:none;
+  border-top-style: none;
+  border-top-color: transparent;
+  text-align:left;
+}
+
+.content-show{
+	background:linear-gradient(#F6EDF7 0%,transparent 30%);
+	border-top-style: solid;
+	border-top-color: #40383D;
+}
+
+.button-edit{
+	border-radius:10px 10px 0 0;
+}
+
+/*
+END ADVANCED SEARCH -------------------------------------------
+*/
+
 
 /*
 Myriad Pro Bold
