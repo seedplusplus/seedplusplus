@@ -13,7 +13,7 @@ body {
 PROFILE INFORMATION -------------------------------------------
 */
 
-.prof-lessons > .row{
+.prof-lessons > .row {
 	overflow-x: auto;
 	white-space: nowrap;
 	flex-wrap: nowrap;
@@ -29,7 +29,7 @@ PROFILE INFORMATION -------------------------------------------
   float: none;
 }
 
-.profpic{
+.profpic {
   width: 200px;
   height: 200px;
   position: relative;
@@ -40,7 +40,7 @@ PROFILE INFORMATION -------------------------------------------
   margin-left: 20px!important;
 }
 
-.profpic img{
+.profpic img {
   display: inline;
   margin: 0 auto;
   height: 100%;
@@ -49,7 +49,7 @@ PROFILE INFORMATION -------------------------------------------
 }
 
 
-.about-profile{
+.about-profile {
 	/*background: #F6EDF7;*/
 	background-color: #40383D;
 	border-radius: 10px;
@@ -60,29 +60,29 @@ PROFILE INFORMATION -------------------------------------------
 	color:#F6EDF7;
 	
 }
-.about-profile h2{
+.about-profile h2 {
 	color:#F6EDF7;
 	font-size:1.2rem;
 	font-weight:600;
 	text-decoration:none;
 }
 
-.about-profile p{
+.about-profile p {
 	text-align:left!important;
 	font-size:0.9rem;
 	font-style: italic;
 }
 
-.profile-column{
+.profile-column {
 	background-color: #40383D;
 	height:100vh;
 	
 }
 
-.upload-pic{
+.upload-pic {
 	text-align:center;
 }
-.upload-pic button{
+.upload-pic button {
 	border-radius:10px;
 	background-color:#F6EDF7;
 	font-size:1rem;
@@ -90,7 +90,7 @@ PROFILE INFORMATION -------------------------------------------
 	font-weight:600;
 	color:#362630;
 }
-.upload-pic button:hover{
+.upload-pic button:hover {
 	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
 	transition: color 0.5s;
 	color: green;
@@ -104,7 +104,7 @@ PROFILE INFORMATION -------------------------------------------
 	margin-top: 10px;
 }
 
-.submit-button{
+.submit-button {
 	width:75%;
 }
 
@@ -180,6 +180,7 @@ BACKGROUND FORMATTING -------------------------------------------
 	box-shadow:0px 0px 600px white inset;
 	
 }
+
 #home-background4{
 	background-image: url("/static/cloud2.png");
 	background-position: center 110%;
@@ -675,7 +676,7 @@ DROPDOWN FORMATTING	-------------------------------------------
 	}
 
 /* Show the dropdown menu */
-.show {display:block;}
+.show {display:block!important;}
 
 
 /*
@@ -742,6 +743,54 @@ LOGIN FORMATTING -------------------------------------------
 /* 
 END LOGIN FORMATTING -------------------------------------------
 */
+
+/*
+ADVANCED SEARCH
+*/
+
+.advanced-search-style{
+	background:linear-gradient(#F6EDF7 0%,transparent 30%);
+	border-top-style: solid;
+	border-top-color: #40383D;
+	margin:auto;
+}
+.advanced-search-style h1{
+	font-size:1.2rem;
+	font-weight:600;
+	
+}
+
+.dropdown-advanced{
+	position: relative;
+	display: inline-block;
+}
+
+.dropbutton{
+	background-color: #362630;
+	border-radius:10px 10px 0 0;
+	color: #F6EDF7;
+	padding: 2px 5px 2px 5px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropbutton:hover, .dropbutton:focus{
+	-webkit-transition: color 0.5s; /* Safari prior 6.1 */
+	transition: color 0.5s;
+	color: green;
+}
+
+.content-advanced{
+  display: none;
+  text-align:left;
+}
+
+
+/*
+END ADVANCED SEARCH -------------------------------------------
+*/
+
 
 /*
 Myriad Pro Bold

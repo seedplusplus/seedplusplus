@@ -20,3 +20,6 @@ var prevfaq = "";
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+function expandAdvanced() {
+  document.getElementById("dropdown-advanced-id").classList.toggle("show");
+}
