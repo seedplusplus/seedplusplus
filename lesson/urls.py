@@ -23,10 +23,10 @@ urlpatterns = [
     path("curriculum/<int:pk>/edit/", views.curriculum_edit, name="curriculum_edit"),    
     path("curriculum/<int:pk>/delete",views.curriculum_delete,name="curriculum_delete"),    
     path("dashboard",views.lesson_dashboard, name="lesson_dashboard"),
+    path("dashboard/<int:pk>", views.lesson_dashboard, name="image_upload"),     
     path("lessons/explore/filters/<search_text>",views.apply_filters, name="apply_filters"),
     path("lessons/explore/filters/",views.apply_filters, name="apply_filters"),
     path("dashboard/upload_prof_pic/",views.upload_prof_pic, name="upload_prof_pic"),
-    path("dashboard/image_upload/<username>", views.prof_pic_view, name="image_upload"), 
     re_path(r'^comments/', include('django_comments.urls')),
    ]
 
