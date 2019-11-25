@@ -25,12 +25,12 @@ def lesson_index(request):
 # Explore lesson page
 def lesson_explore(request):
     
-    Lessons = Lesson.objects.all()
-    Curricula = Curriculum.objects.all()
+    Lessons = Lesson.objects.all().order_by('-created_on')
+    #Curricula = Curriculum.objects.all()
     
-    results = list(sorted(chain(Lessons,Curricula),key=lambda lesson: lesson.created_on))
+    #results = list(sorted(chain(Lessons,Curricula),key=lambda lesson: lesson.created_on))
     context = {
-        "Lessons": results,
+        "Lessons": Lessons,
         "current": 'explore',
     }
     current = 'explore'
@@ -151,13 +151,18 @@ def apply_filters(request, search_text=None):
     language_filters = request.GET.getlist('language')
     difficulty_filters = request.GET.getlist('difficulty')
     
+    #print(difficulty_filters)
+    
     length_map = {0 : "less_than_1",
                     1 : "1_hour",
                     2 : "2_hour"}
     
     difficulty_map = {0 : "beginner",
                     1 : "intermediate",
-                    2 : "advanced"}
+                    2 : "advanced",
+                    3 : "hyper-difficult",
+                    4 : "hell mode",
+                    5 : "absolut nightmare"}
         
     # Filter duration    
     if len(length_filters) != 0:
@@ -169,7 +174,11 @@ def apply_filters(request, search_text=None):
     
     # Filter difficulty
     if len(difficulty_filters) != 0:
-        Lessons = [x for x in Lessons if x.difficulty in difficulty_filters]
+        for x in Lessons:
+            print(x.difficulty)
+        Lessons = [x for x in Lessons if difficulty_map[x.difficulty] in difficulty_filters]
+        
+    #input()
     
     context = {
         "Lessons": Lessons,
