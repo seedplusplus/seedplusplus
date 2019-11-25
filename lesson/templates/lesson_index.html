@@ -21,7 +21,7 @@
 		</div>
 		<br>
 		<div class="col-md-6 offset-md-3">
-			<button type="button" onclick="expandAdvanced()" class="dropbutton">Show Advanced</button>
+			<button id="dropped" type="button" onclick="expandAdvanced()" class="dropbutton">Show Advanced</button>
 		</div>
 		<div class = "col-md-6 offset-md-3 advanced-search-style">
 			<div class="dropdown-advanced">
@@ -50,22 +50,21 @@
 						
 						<li id="language" style="display:inline-block">Language</li>
 						{% if python %}
-							<input type="checkbox" name="language" value="python" checked> Python &nbsp;
+							<input type="checkbox" name="language" value="Python" checked> Python &nbsp;
 						{% else %}
-							<input type="checkbox" name="language" value="python"> Python &nbsp;
+							<input type="checkbox" name="language" value="Python"> Python &nbsp;
 						{% endif %}
 
-<<<<<<< HEAD
 						{% if cplusplus %}
-							<input type="checkbox" name="language" value="cplusplus" checked> C++ &nbsp;
+							<input type="checkbox" name="language" value="C++" checked> C++ &nbsp;
 						{% else %}
-							<input type="checkbox" name="language" value="cplusplus"> C++ &nbsp;
+							<input type="checkbox" name="language" value="C++"> C++ &nbsp;
 						{% endif %}
 
 						{% if java %}
-							<input type="checkbox" name="language" value="java" checked> Java &nbsp;
+							<input type="checkbox" name="language" value="Java" checked> Java &nbsp;
 						{% else %}
-							<input type="checkbox" name="language" value="java"> Java&nbsp;
+							<input type="checkbox" name="language" value="Java"> Java&nbsp;
 						{% endif %}
 						<br>
 						<li id="difficulty" style="display:inline-block">Difficulty</li>
@@ -80,33 +79,6 @@
 						{% else %}
 							<input type="checkbox" name="difficulty" value="intermediate"> Intermediate&nbsp;
 						{% endif %}
-=======
-	                                <li id="language">Language</li>
-	                                {% if python %}
-	                                    <input type="checkbox" name="language" value="Python" checked> Python<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="Python"> Python<br>
-	                                {% endif %}
-
-	                                {% if cplusplus %}
-	                                    <input type="checkbox" name="language" value="C++" checked> C++<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="C++"> C++<br>
-	                                {% endif %}
-
-	                                {% if java %}
-	                                    <input type="checkbox" name="language" value="Java" checked> Java<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="language" value="Java"> Java<br>
-	                                {% endif %}
-	                                
-	                                <li id="difficulty">Difficulty</li>
-	                                {% if beginner %}
-	                                    <input type="checkbox" name="difficulty" value="beginner" checked> Beginner<br>
-	                                {% else %}
-	                                    <input type="checkbox" name="difficulty" value="beginner"> Beginner<br>
-	                                {% endif %}
->>>>>>> 12310885e1173a7b76ad68f06bcac9a7efe52962
 
 						{% if advanced %}
 							<input type="checkbox" name="difficulty" value="advanced" checked> Advanced&nbsp;
