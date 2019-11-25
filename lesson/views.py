@@ -124,7 +124,7 @@ def search_lessons(search_text):
 # Lesson search
 def lesson_search(request,search_text=None):
     #input(search_text)
-    if search_text == None:
+    if search_text == None or search_text == "":
         search_text = request.GET.get('home_search')            
         return apply_filters(request,search_text)
     
@@ -142,11 +142,10 @@ def lesson_search(request,search_text=None):
 
 # Filters (may become advanced search)
 def apply_filters(request, search_text=None):
-    
-    if search_text != None:
-        Lessons = search_lessons(search_text)
+    if search_text == None or search_text == "":
+        Lessons = Lesson.objects.all().order_by('-created_on')  
     else:
-        Lessons = Lesson.objects.all().order_by('-created_on')    
+        Lessons = search_lessons(search_text)
     
     length_filters = request.GET.getlist('length')
     language_filters = request.GET.getlist('language')
