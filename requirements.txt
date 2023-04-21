@@ -16,6 +16,6 @@ pytz==2019.2
 rcssmin==1.0.6
 rjsmin==1.1.0
 six==1.12.0
-sqlparse==0.3.0
+sqlparse==0.4.4
 swapper==1.1.1
 coverage==3.6
